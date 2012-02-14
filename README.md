@@ -21,6 +21,7 @@ bundler (gem)
 
 Setup
 -----
+  It is best if you have a fast internet connection for this:
     $ git clone git@github.com:mattscilipoti/oseh-occasions.git
     $ cd oseh-occasions
     $ bundle install
@@ -33,4 +34,8 @@ All tests should pass.
 Deloyment
 ==========
 
-Our testing site is on heroku.
+Our testing site is on heroku (http://hollow-dusk-9175.herokuapp.com/).
+     $ git push heroku master
+
+See: 
+* http://devcenter.heroku.com/articles/rails3
