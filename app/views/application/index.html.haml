@@ -1,1 +1,8 @@
 %h1 Welcome to the High Holidays at Oseh Shalom
+
+#member_search
+  = form_tag search_members_path, :method => :get do
+    =label_tag 'member_query', "First, let's find out who you are.  Please type your name here ->"
+    =text_field_tag 'member_query', nil, :placeholder => 'Rabbi Doug Heifetz'
+    =button_tag 'Search'
+
