@@ -25,6 +25,8 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
   gem 'sqlite3'
 end
 
