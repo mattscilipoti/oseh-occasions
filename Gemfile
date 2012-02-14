@@ -27,6 +27,11 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'launchy'
+end
+
 group :production do
   gem 'pg'
 end
