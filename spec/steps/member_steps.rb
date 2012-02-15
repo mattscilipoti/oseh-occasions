@@ -12,7 +12,7 @@ end
 
 step "I search by my last name" do
   within '#member_search' do
-    fill_in('member_query', :with => @member.last_name)
+    fill_in('q_with_name', :with => @member.last_name)
     click_link_or_button 'Search'
   end
 end

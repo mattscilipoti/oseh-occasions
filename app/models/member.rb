@@ -1,10 +1,10 @@
 class Member < ActiveRecord::Base
 
-  # TODO: scope?
-  def self.find_by_partial_name(partial_name)
+  # TODO: save full name and full_text search it?
+  scope :with_name, lambda { |partial_name|
     # TODO: use library fo like (postgres need ILIKE)
     where("first_name LIKE :partial_name OR middle_name LIKE :partial_name OR last_name LIKE :partial_name", :partial_name => "%#{partial_name}%")
-  end
+  }
 
   def self.full_names
     # TODO: if we save full_name, we can use pluck(:full_name)
