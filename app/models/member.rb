@@ -6,6 +6,11 @@ class Member < ActiveRecord::Base
     where("first_name LIKE :partial_name OR middle_name LIKE :partial_name OR last_name LIKE :partial_name", :partial_name => "%#{partial_name}%")
   end
 
+  def self.full_names
+    # TODO: if we save full_name, we can use pluck(:full_name)
+    all.collect &:full_name
+  end
+
   def self.title_pattern
     #from: http://en.wikipedia.org/wiki/Title#Formal_social_titles
     /Mr\.|Ms\.|Mrs\.|Miss|Hon\.|Rabbi/
