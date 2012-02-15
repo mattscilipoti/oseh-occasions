@@ -11,7 +11,7 @@ class MembersController < ApplicationController
     if member_query && @members.count == 1
       @member = @members.last
       session[:member_id] = @member.id
-      redirect_to :back, :notice => "We found you! #{@member.first_name}"
+      redirect_to :back, :notice => "We found you, #{@member.first_name}!"
     end
   end
 end

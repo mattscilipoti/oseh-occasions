@@ -10,7 +10,6 @@ Feature: Who will be attending?
     Given I am the Member:
       | full_name  | Art M. Green |
       | main_phone | 123-456-7890 |
-    And a bunch of other Members exist
     When I visit the home page
-    And I search for my name
+    And I search by my last name
     Then I should see that my information is filled in automatically
