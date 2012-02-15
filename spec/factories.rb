@@ -12,5 +12,11 @@ FactoryGirl.define do
     f.first_name { Faker::Name.first_name }
     f.last_name  { Faker::Name.last_name }
   end
+
+  factory :member_full, :parent => :member do |f|
+    f.middle_name { Faker::Name.first_name }
+    f.main_phone  { Faker::PhoneNumber.phone_number }
+    f.main_email  { Faker::Internet.email }
+  end
 end
 

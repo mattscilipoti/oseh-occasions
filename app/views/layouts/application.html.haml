@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title
+      = @title && @title + " | "
+      Oseh Occasions
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = yield :meta
+    = csrf_meta_tags
+  %body
+    - flash.each do |name, msg|
+      .flash{:id => "flash_#{name}", :class => "#{name}"}
+        %p
+          = msg
+          -#= link_to('x', '#', :id => 'close-flash', :class => 'hide')
+
+  = yield
