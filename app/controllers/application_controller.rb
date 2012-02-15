@@ -6,4 +6,9 @@ class ApplicationController < ActionController::Base
       @member = Member.find(member_id)
     end
   end
+
+  def logout
+    session[:member_id] = nil
+    redirect_to '/', :notice => "Logged out."
+  end
 end

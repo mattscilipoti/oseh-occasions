@@ -10,16 +10,16 @@ step 'I am the Member:' do |table|
   end
 end
 
-step "I search for my name" do
+step "I search by my last name" do
   within '#member_search' do
-    fill_in('member_query', :with => @member.full_name)
+    fill_in('member_query', :with => @member.last_name)
     click_link_or_button 'Search'
   end
 end
 
 step "I should see that my information is filled in automatically" do
   within '#member_information' do
-    page.should have_field('#main_phone', :with => @member.main_phone)
+    page.should have_selector('#main_phone', :text => @member.main_phone)
   end
 end
 

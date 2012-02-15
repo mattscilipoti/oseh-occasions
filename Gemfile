@@ -5,8 +5,9 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'database_cleaner', :require => false
 gem 'haml-rails'
-gem 'heroku'
+gem 'heroku', :require => false
 gem 'jquery-rails'
 gem 'rspec-rails'
 gem 'turnip' # rspec "features"

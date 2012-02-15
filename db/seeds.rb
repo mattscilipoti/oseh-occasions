@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'database_cleaner'
+DatabaseCleaner.clean_with :truncation
+
+Factory :member_full,
+  :full_name => "Linda Solomon",
+  :main_email => 'lksolomon@comcast.net'
+
+49.times do
+  Factory :member_full
+end
+
+puts "DB cleaned & seeded."
