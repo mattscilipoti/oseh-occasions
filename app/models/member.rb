@@ -1,15 +1,29 @@
 class Member < ActiveRecord::Base
   before_save :assemble_full_name
 
-  # TODO: scope?
+  # Breaks partial_name (argument) into its parts
+  #   and checks to see if either part is in the full_name
   def self.find_by_partial_name(partial_name)
-    # TODO: use library fo like (postgres need ILIKE)
-    where("first_name LIKE :partial_name OR middle_name LIKE :partial_name OR last_name LIKE :partial_name", :partial_name => "%#{partial_name}%")
+    # TODO: scope?
+
+    # TODO: can we use ideas in http://stackoverflow.com/questions/2992393/arel-how-to-cleanly-join-multiple-conditions-with-or?
+    #scope = Article
+    # set.each{|v| scope = scope.or(v.to_condition)}
+    members = Member.arel_table
+    where_clause = nil
+    conditions = partial_name.split(' ').each do |name_part|
+      if where_clause
+        where_clause = where_clause.or(members[:full_name].matches("%#{name_part}%"))
+      else #first pass
+        where_clause = members[:full_name].matches("%#{name_part}%")
+      end
+    end
+    Member.where(where_clause).order(:full_name)
   end
 
   def self.title_pattern
     #from: http://en.wikipedia.org/wiki/Title#Formal_social_titles
-    /Mr\.|Ms\.|Mrs\.|Miss|Hon\.|Rabbi/
+    /Mr\.|Ms\.|Mrs\.|Miss|Gen|Hon|Rabbi/
   end
 
   def full_name
