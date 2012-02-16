@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  before_save :assemble_full_name
 
   # TODO: scope?
   def self.find_by_partial_name(partial_name)
@@ -12,11 +13,11 @@ class Member < ActiveRecord::Base
   end
 
   def full_name
-    @full_name ||= [first_name, middle_name, last_name].join(' ')
+    super || assemble_full_name
   end
 
   def full_name=(value)
-    (@full_name = value).tap do |full_name|
+    super.tap do |full_name|
       parts = full_name.split(' ')
       if parts[0] =~ Member.title_pattern
         self.title = parts.shift
@@ -24,7 +25,13 @@ class Member < ActiveRecord::Base
       self.first_name  = parts[0]
       self.middle_name = parts[1]
       self.last_name   = parts[2]
-      self.name_suffix      = parts[3]
+      self.name_suffix = parts[3]
     end
+  end
+
+  private
+
+  def assemble_full_name
+    self.full_name = [title, first_name, middle_name, last_name, name_suffix].compact.join(' ')
   end
 end

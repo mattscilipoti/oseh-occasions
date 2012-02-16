@@ -10,10 +10,12 @@ describe Member do
   end
 
   it "should combine name parts into full_name" do
-    subject.first_name = 'John'
+    subject.title       = 'Hon.'
+    subject.first_name  = 'John'
     subject.middle_name = 'Q.'
-    subject.last_name = 'Public'
+    subject.last_name   = 'Public'
+    subject.name_suffix = 'Esq.'
 
-    subject.full_name.should == "John Q. Public"
+    subject.full_name.should == "Hon. John Q. Public Esq."
   end
 end
