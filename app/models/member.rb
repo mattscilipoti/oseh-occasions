@@ -6,9 +6,23 @@ class Member < ActiveRecord::Base
     where("first_name LIKE :partial_name OR middle_name LIKE :partial_name OR last_name LIKE :partial_name", :partial_name => "%#{partial_name}%")
   }
 
-  def self.full_names
-    # TODO: if we save full_name, we can use pluck(:full_name)
-    all.collect &:full_name
+  def self.full_names(*args)
+    options = args.extract_options!
+    if options[:only_names]
+      # supports twitter bootstrap typeahead function
+      # TODO: if we save full_name, we can use pluck(:full_name)
+      scoped.collect &:full_name
+    else
+      members = scoped
+      if args
+        members = members.with_name(*args)
+      end
+      members.collect {|member| {
+        :id => member.id,
+        :label => member.full_name,
+        :value => member.full_name}
+      }
+    end
   end
 
   def self.title_pattern
