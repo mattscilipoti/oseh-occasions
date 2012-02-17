@@ -10,9 +10,8 @@ OsehOccasions::Application.load_tasks
 desc 'These are the steps that should be run whenever the db schema is changed.'
 task 'db:after_schema_change' do
   if Rails.env.development?
-    # TODO: add annotate
-    #puts "INFO: Running 'annotate'"
-    #`annotate`
+    puts "INFO: Annotating models w/schema."
+    `annotate --exclude tests,fixtures`
 
     puts "INFO: Dumping schema.  Preparing test db."
     Rake::Task['db:test:prepare'].invoke

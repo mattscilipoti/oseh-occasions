@@ -53,3 +53,21 @@ class Person < ActiveRecord::Base
     self.full_name = [title, first_name, middle_name, last_name, name_suffix].compact.join(' ')
   end
 end
+
+# == Schema Information
+#
+# Table name: people
+#
+#  id          :integer         not null, primary key
+#  title       :string(255)
+#  first_name  :string(255)
+#  middle_name :string(255)
+#  last_name   :string(255)
+#  name_suffix :string(255)
+#  main_phone  :string(255)
+#  main_email  :string(255)
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#  full_name   :string(255)
+#
+

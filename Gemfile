@@ -11,6 +11,7 @@ gem 'faker'
 gem 'haml-rails'
 gem 'heroku', :require => false
 gem 'jquery-rails'
+gem 'rake'
 gem 'rake-hooks', :require => false
 gem 'rspec-rails'
 gem 'stamp'
@@ -32,6 +33,10 @@ end
 group :development, :test do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'sqlite3'
+end
+
+group :development do
+  gem 'annotate', :require => false
 end
 
 group :test do

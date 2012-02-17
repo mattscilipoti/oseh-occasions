@@ -13,8 +13,9 @@ namespace :spec do
   end
 end
 
+include Rake::Hooks
 #run acceptance specs after other specs
-Rake::Hooks.after :spec do
+after :spec do
   Rake::Task['spec:acceptance'].invoke
 end
 

@@ -29,6 +29,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.2.6)
+    annotate (2.4.0)
     archive-tar-minitar (0.5.2)
     arel (3.0.0)
     builder (3.0.0)
@@ -199,6 +200,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   capybara
   coffee-rails (~> 3.2.1)
   database_cleaner
@@ -210,6 +212,7 @@ DEPENDENCIES
   launchy
   pg
   rails (= 3.2.1)
+  rake
   rake-hooks
   rspec-rails
   ruby-debug19
