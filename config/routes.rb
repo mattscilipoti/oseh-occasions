@@ -1,7 +1,8 @@
 OsehOccasions::Application.routes.draw do
   root :to => 'application#index'
   match 'logout', :to => 'application#logout'
-  resources :members
+  resources :people
+  resources :sessions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

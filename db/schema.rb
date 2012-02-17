@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120216034800) do
+ActiveRecord::Schema.define(:version => 20120217024007) do
 
-  create_table "members", :force => true do |t|
+  create_table "people", :force => true do |t|
     t.string   "title"
     t.string   "first_name"
     t.string   "middle_name"
@@ -26,6 +26,6 @@ ActiveRecord::Schema.define(:version => 20120216034800) do
     t.string   "full_name"
   end
 
-  add_index "members", ["full_name"], :name => "index_members_on_full_name"
+  add_index "people", ["full_name"], :name => "index_persons_on_full_name"
 
 end

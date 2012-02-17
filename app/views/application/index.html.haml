@@ -1,27 +1,27 @@
-Interested in
-%h1 High Holidays at Oseh Shalom?
 
--if @member
-  #member_information
+-if @person
+  %h1 High Holidays at Oseh Shalom
+
+  #person_information
     %p
       %label Name:
-      %span#first_name= @member.first_name
-      %span#middle_name= @member.middle_name
-      %span#last_name= @member.last_name
+      %span#first_name= @person.first_name
+      %span#middle_name= @person.middle_name
+      %span#last_name= @person.last_name
 
     %p
       %label Phone:
-      %span#main_phone= @member.main_phone
+      %span#main_phone= @person.main_phone
     %p
       %label Email:
-      %span#main_email= @member.main_email
+      %span#main_email= @person.main_email
 -else
+  %p It looks like you
+  %p are interested in
+  %h1 High Holidays at Oseh Shalom
 
-  %input#member_name.span3{:type => :text, :data => {:provide => 'typeahead', :source => Member.full_names}}
-
-:javascript
-  $( "#member_name" ).blur( function( event) {
-    console.log( "input was " + this.value );
-  });
-
-
+  #person_search
+    = form_for :person, :url => new_session_path, :method => :get do |f|
+      =f.text_field :full_name, :placeholder => 'What is your name?', :data => {:provide => 'typeahead', :source => Person.full_names }
+      =f.submit 'This is me!'
+      =link_to "I don't see me", new_person_path, :class => 'btn'

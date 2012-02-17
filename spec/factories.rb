@@ -8,12 +8,12 @@
 # Read about factories at http://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :member do |f|
+  factory :person do |f|
     f.first_name { Faker::Name.first_name }
     f.last_name  { Faker::Name.last_name }
   end
 
-  factory :member_full, :parent => :member do |f|
+  factory :person_full, :parent => :person do |f|
     f.middle_name {
       middle_name = Faker::Name.first_name
       case rand(4)
@@ -23,7 +23,7 @@ FactoryGirl.define do
       end
     }
     f.main_phone  { Faker::PhoneNumber.phone_number }
-    f.main_email  {|member| "#{member.full_name.parameterize}@example.com" }
+    f.main_email  {|person| "#{person.full_name.parameterize}@example.com" }
   end
 end
 

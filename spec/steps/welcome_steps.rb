@@ -12,7 +12,7 @@ step "I visit the home page" do
 end
 
 step "I should see an overview of the High Holidays" do
-  texts = ['Welcome', 'High Holidays', 'Oseh Shalom']
+  texts = ['High Holidays', 'Oseh Shalom']
   texts.each do |text|
     page.should have_content(text)
   end

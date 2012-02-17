@@ -1,0 +1,17 @@
+%h1
+  People
+  -if @scopes
+    Filtered by #{@scopes.inspect}
+
+%table#persons
+  %thead
+    %th Full Name
+    %th Main Phone
+    %th Main Email
+  %tbody
+    - @persons.each do |person|
+      %tr
+        %td= person.full_name
+        %td= person.main_phone
+        %td= person.main_email
+

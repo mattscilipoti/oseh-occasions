@@ -2,13 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def index
-    if member_id = session[:member_id]
-      @member = Member.find(member_id)
+    if person_id = session[:person_id]
+      @person = Person.find(person_id)
     end
   end
 
   def logout
-    session[:member_id] = nil
+    session[:person_id] = nil
     redirect_to '/', :notice => "Logged out."
   end
 end

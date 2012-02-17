@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Member do
+describe Person do
   it "should parse full_name into components" do
     subject.full_name = "Mr. John Q. Public"
     subject.title.should == "Mr."
@@ -20,13 +20,13 @@ describe Member do
   end
 end
 
-describe Member, '(scopes)' do
+describe Person, '(scopes)' do
   before :each do
     [ 'Rabbi Douglas Heifetz',
       'Gen. Douglas MacArthur',
       'Ben Hur',
       'Abraham'
-    ].each {|full_name| Factory :member_full, :full_name => full_name }
+    ].each {|full_name| Factory :person_full, :full_name => full_name }
   end
 
   describe '#full_names' do
@@ -41,7 +41,7 @@ describe Member, '(scopes)' do
       'Tom Hur' => ['Ben Hur', 'Gen. Douglas MacArthur']
     }.each do |query, expected_names|
       it "should return #{expected_names} names when querying '#{query}'" do
-        Member.full_names(query).should == expected_names
+        Person.full_names(query).should == expected_names
       end
     end
   end

@@ -1,24 +1,24 @@
-class Member < ActiveRecord::Base
+class Person < ActiveRecord::Base
   before_save :assemble_full_name
 
   # Breaks partial_name (argument) into its parts
   #   and checks to see if either part is in the full_name
   scope :with_name, lambda { |partial_name|
-    return Member.scoped unless partial_name
+    return Person.scoped unless partial_name
 
     # TODO: can we use ideas in http://stackoverflow.com/questions/2992393/arel-how-to-cleanly-join-multiple-conditions-with-or?
     #scope = Article
     # set.each{|v| scope = scope.or(v.to_condition)}
-    members = Member.arel_table
+    people = Person.arel_table
     where_clause = nil
     conditions = partial_name.split(' ').each do |name_part|
       if where_clause
-        where_clause = where_clause.or(members[:full_name].matches("%#{name_part}%"))
+        where_clause = where_clause.or(people[:full_name].matches("%#{name_part}%"))
       else #first pass
-        where_clause = members[:full_name].matches("%#{name_part}%")
+        where_clause = people[:full_name].matches("%#{name_part}%")
       end
     end
-    Member.where(where_clause).order(:full_name)
+    Person.where(where_clause).order(:full_name)
   }
 
   def self.full_names(filter = nil)
@@ -37,7 +37,7 @@ class Member < ActiveRecord::Base
   def full_name=(value)
     super.tap do |full_name|
       parts = full_name.split(' ')
-      if parts[0] =~ Member.title_pattern
+      if parts[0] =~ Person.title_pattern
         self.title = parts.shift
       end
       self.first_name  = parts[0]
