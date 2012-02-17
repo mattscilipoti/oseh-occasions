@@ -1,29 +1,32 @@
 -# TODO: use twitter/bootstrap grid system
-#sign_in
-  -if @person
-    %h1 High Holidays at Oseh Shalom
 
-    #person_information
-      %p
-        %label Name:
-        %span#first_name= @person.first_name
-        %span#middle_name= @person.middle_name
-        %span#last_name= @person.last_name
+-if @person
+  %h1 Welcome #{@person.first_name}
 
-      %p
-        %label Phone:
-        %span#main_phone= @person.main_phone
-      %p
-        %label Email:
-        %span#main_email= @person.main_email
-  -else
+  #person_information
+    %p
+      %label Name:
+      %span#first_name= @person.first_name
+      %span#middle_name= @person.middle_name
+      %span#last_name= @person.last_name
 
-    %p It looks like you
-    %p are interested in
-    %h1 High Holidays at Oseh Shalom
+    %p
+      %label Phone:
+      %span#main_phone= @person.main_phone
+    %p
+      %label Email:
+      %span#main_email= @person.main_email
+-else
+  %h1 Shalom
+  #upcoming_events.tabbable.tabs-left
+    - upcoming_events = Event.upcoming(5)
+    %h2 Upcoming Events
+    %ul.nav.nav-tabs
+      - upcoming_events.each_with_index do |event, index|
+        %li{:class => ('active' if index==0)}= link_to event.name, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
 
-    #person_search
-      = form_for :person, :url => new_session_path, :method => :get do |f|
-        =f.text_field :full_name, :placeholder => 'What is your name?', :data => {:provide => 'typeahead', :source => Person.full_names }
-        =f.submit "It's me!"
-      %p.sign_up Don't see your name?  Click here to #{ link_to "Sign Up",  new_person_path }
+    .tab-content
+      - upcoming_events.each_with_index do |event, index|
+        .tab-pane{:id => "tab-#{event.name.parameterize}", :class => ('active' if index==0)}
+          %p= event.name
+          %p= event.start_date

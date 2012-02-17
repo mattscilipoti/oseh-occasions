@@ -14,5 +14,10 @@
         %p
           = msg
           -#= link_to('x', '#', :id => 'close-flash', :class => 'hide')
-
-  = yield
+    .container-fluid
+      .row-fluid
+        .span2
+          <!--Sidebar content-->
+          = yield :left_sidebar
+        .span10
+          = yield

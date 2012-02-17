@@ -8,6 +8,14 @@
 # Read about factories at http://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
+  factory :event do |f|
+    f.name { Faker::Lorem.words(2).join(' ') }
+  end
+
+  factory :event_full, :parent => :event do |f|
+    f.start_date { rand(90).days.from_now }
+  end
+
   factory :person do |f|
     f.first_name { Faker::Name.first_name }
     f.last_name  { Faker::Name.last_name }

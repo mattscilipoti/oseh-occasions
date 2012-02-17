@@ -9,6 +9,11 @@
 require 'database_cleaner'
 DatabaseCleaner.clean_with :truncation
 
+# demo data
+Factory :event_full, :name => 'High Holidays'
+5.times { Factory :event_full }
+
+
 Factory :person_full,
         :full_name  => "Linda Solomon",
         :main_email => 'ls@example.com'
