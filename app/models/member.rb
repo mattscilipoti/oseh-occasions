@@ -4,7 +4,7 @@ class Member < ActiveRecord::Base
   # Breaks partial_name (argument) into its parts
   #   and checks to see if either part is in the full_name
   scope :with_name, lambda { |partial_name|
-    # TODO: scope?
+    return Member.scoped unless partial_name
 
     # TODO: can we use ideas in http://stackoverflow.com/questions/2992393/arel-how-to-cleanly-join-multiple-conditions-with-or?
     #scope = Article
@@ -21,23 +21,8 @@ class Member < ActiveRecord::Base
     Member.where(where_clause).order(:full_name)
   }
 
-  def self.full_names(*args)
-    options = args.extract_options!
-    if options[:only_names]
-      # supports twitter bootstrap typeahead function
-      # TODO: if we save full_name, we can use pluck(:full_name)
-      scoped.collect &:full_name
-    else
-      members = scoped
-      if args and args.is_a?(String) #ignore true (:full_names => true)
-        members = members.with_name(*args)
-      end
-      members.collect {|member| {
-        :id => member.id,
-        :label => member.full_name,
-        :value => member.full_name}
-      }
-    end
+  def self.full_names(filter = nil)
+    with_name(filter).pluck :full_name
   end
 
   def self.title_pattern

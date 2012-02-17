@@ -10,10 +10,10 @@ step 'I am the Member:' do |table|
   end
 end
 
-step "I search by my last name" do
+step "I search by my :last_name" do |name_part|
   within '#member_search' do
-    fill_in('q_with_name', :with => @member.last_name)
-    click_link_or_button 'Search'
+    fill_in 'q_with_name', :with => @member.send(name_part)
+    #click_link_or_button 'Search'
   end
 end
 

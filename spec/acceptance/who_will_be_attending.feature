@@ -3,6 +3,7 @@ Feature: Who will be attending?
   The Organizers
   Want to know who will be attending
 
+  @javascript
   Scenario: Identify yourself (unique name)
     As a participant,
     It should be easy to find yourself in the list of Members
@@ -11,5 +12,5 @@ Feature: Who will be attending?
       | full_name  | Art M. Green |
       | main_phone | 123-456-7890 |
     When I visit the home page
-    And I search by my last name
+    And I search by my "full name"
     Then I should see that my information is filled in automatically

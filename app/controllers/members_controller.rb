@@ -2,11 +2,9 @@ class MembersController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    @scopes =   params[:q] || {}
+    @scopes = params[:q] || {}
     @members = Member.scoped
     @scopes.each do |scope, args|
-      # support jQuery autocomplete
-      args = params[:term] if scope == :full_names.to_s && params[:term]
       logger.debug("DBG: scoping Member: #{scope} => #{args}")
       @members = @members.send(scope, args)
     end

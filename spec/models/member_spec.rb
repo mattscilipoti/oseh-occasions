@@ -29,7 +29,7 @@ describe Member, '(scopes)' do
     ].each {|full_name| Factory :member_full, :full_name => full_name }
   end
 
-  describe '#with_name' do
+  describe '#full_names' do
     { 'D'      => ['Gen. Douglas MacArthur', 'Rabbi Douglas Heifetz'],
       'Doug'   => ['Gen. Douglas MacArthur', 'Rabbi Douglas Heifetz'],
       'Hu'     => ['Ben Hur', 'Gen. Douglas MacArthur'],
@@ -41,7 +41,7 @@ describe Member, '(scopes)' do
       'Tom Hur' => ['Ben Hur', 'Gen. Douglas MacArthur']
     }.each do |query, expected_names|
       it "should return #{expected_names} names when querying '#{query}'" do
-        Member.with_name(query).collect(&:full_name).should == expected_names
+        Member.full_names(query).should == expected_names
       end
     end
   end
