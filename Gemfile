@@ -6,6 +6,8 @@ gem 'rails', '3.2.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'database_cleaner', :require => false
+gem 'factory_girl_rails'
+gem 'faker'
 gem 'haml-rails'
 gem 'heroku', :require => false
 gem 'jquery-rails'
@@ -26,8 +28,6 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'factory_girl_rails'
-  gem 'faker'
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'sqlite3'
 end
