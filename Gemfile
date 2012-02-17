@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'rake'
 gem 'rake-hooks', :require => false
 gem 'rspec-rails'
+#gem 'ruby-gntp',  :require => false
 gem 'stamp'
 gem 'turnip' # rspec "features"
 gem 'twitter-bootstrap-rails'
@@ -31,6 +32,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'guard-spin',   :require => false
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'sqlite3'
 end

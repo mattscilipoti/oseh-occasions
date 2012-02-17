@@ -39,3 +39,16 @@ Our testing site is on heroku (http://hollow-dusk-9175.herokuapp.com/).
 
 See: 
 * http://devcenter.heroku.com/articles/rails3
+
+
+Dev Notes
+===========
+
+Autotest & Faster test startup w/ spin
+---------------------------
+Start `guard` to start spin. test will automagically run when you change files:
+  $ guard
+  
+To run manually:
+  $ spin push spec
+  $ spin push spec/model/person_spec.rb:43
