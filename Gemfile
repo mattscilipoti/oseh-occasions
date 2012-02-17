@@ -11,6 +11,7 @@ gem 'faker'
 gem 'haml-rails'
 gem 'heroku', :require => false
 gem 'jquery-rails'
+gem 'rake-hooks', :require => false
 gem 'rspec-rails'
 gem 'stamp'
 gem 'turnip' # rspec "features"
