@@ -10,8 +10,11 @@ require 'database_cleaner'
 DatabaseCleaner.clean_with :truncation
 
 Factory :person_full,
-  :full_name => "Linda Solomon",
-  :main_email => 'lksolomon@comcast.net'
+        :full_name  => "Linda Solomon",
+        :main_email => 'ls@example.com'
+
+Factory :person_full,
+        :full_name => "Cynthia Elizabeth"
 
 49.times do
   Factory :person_full
