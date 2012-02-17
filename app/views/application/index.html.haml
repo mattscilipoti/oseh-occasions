@@ -23,7 +23,8 @@
     %h2 Upcoming Events
     %ul.nav.nav-tabs
       - upcoming_events.each_with_index do |event, index|
-        %li{:class => ('active' if index==0)}= link_to event.name, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
+        -caption = "#{event.start_date.stamp("10/01")} | #{event.name.truncate(15)}"
+        %li{:class => ('active' if index==0)}= link_to caption, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
 
     .tab-content
       - upcoming_events.each_with_index do |event, index|

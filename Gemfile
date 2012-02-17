@@ -12,6 +12,7 @@ gem 'haml-rails'
 gem 'heroku', :require => false
 gem 'jquery-rails'
 gem 'rspec-rails'
+gem 'stamp'
 gem 'turnip' # rspec "features"
 gem 'twitter-bootstrap-rails'
 
