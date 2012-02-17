@@ -1,0 +1,25 @@
+ul.dropdown-menu {
+  font-size: 3em;
+  max-width: 500px;
+  width: 500px;
+  li {
+    line-height: 3em;
+    padding: 10px 0;
+    width: 500px;
+
+  }
+
+}
+#sign_in {
+  font-size: 2em;
+
+  input, button, p {
+    font-size: 1.2em;
+    height: 50px;
+  }
+
+  input[type='text'] {
+    font-size: 1.5em;
+    width: 500px;
+  }
+}
