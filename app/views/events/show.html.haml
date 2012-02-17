@@ -4,7 +4,7 @@
   %b Name:
   = @event.name
 
-    #person_search
+    -##person_search
       = form_for :person, :url => new_session_path, :method => :get do |f|
         =f.text_field :full_name, :placeholder => 'What is your name?', :data => {:provide => 'typeahead', :source => Person.full_names }
         =f.submit "It's me!"
