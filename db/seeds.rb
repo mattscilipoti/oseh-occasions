@@ -10,7 +10,12 @@ require 'database_cleaner'
 DatabaseCleaner.clean_with :truncation
 
 # demo data
-Factory :event_full, :name => 'High Holidays'
+# TODO: need correct date
+hh = Factory(:event_full, :name => 'High Holidays')
+#TODO: rough approximations
+Factory(:event_full, :name => 'Rosh Hashanah', :start_date => hh.start_date, :parent => hh)
+Factory(:event_full, :name => 'Yom Kippur', :start_date => hh.start_date + 10, :parent => hh)
+
 5.times { Factory :event_full }
 
 

@@ -48,7 +48,7 @@ Autotest & Faster test startup w/ spin
 ---------------------------
 Start `guard` to start spin. test will automagically run when you change files:
   $ guard
-  
+
 To run manually:
   $ spin push spec
   $ spin push spec/model/person_spec.rb:43

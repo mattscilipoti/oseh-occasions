@@ -1,9 +1,12 @@
 class Event < ActiveRecord::Base
+  belongs_to :parent, :class_name => Event.name
+  has_many :children, :class_name => Event.name, :foreign_key => 'parent_id'
   scope :upcoming, lambda {|limit|
     limit ||= 5
     where("start_date > #{Date.today}").order(:start_date).limit(limit)
   }
 end
+
 
 # == Schema Information
 #
@@ -14,5 +17,6 @@ end
 #  start_date :datetime
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  parent_id  :integer
 #
 

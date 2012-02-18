@@ -31,3 +31,7 @@
         .tab-pane{:id => "tab-#{event.name.parameterize}", :class => ('active' if index==0)}
           %p= event.name
           %p= event.start_date
+
+          %ul
+            - event.children.each do |event|
+              %li= link_to event.name, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
