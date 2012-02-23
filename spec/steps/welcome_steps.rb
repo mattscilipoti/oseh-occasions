@@ -3,13 +3,6 @@ step "I should be on the home page" do
   current_path.should == '/'
 end
 
-step "I visit :path" do |path|
-  visit path
-end
-
-step "I visit the home page" do
-  visit '/'
-end
 
 step "I should see an overview of the High Holidays" do
   texts = ['High Holidays', 'Oseh Shalom']

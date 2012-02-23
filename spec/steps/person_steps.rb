@@ -4,6 +4,13 @@ step 'a bunch of other People exist' do
   end
 end
 
+step "I am :person" do |full_name|
+  person = Person.find_by_full_name(full_name)
+  visit create_session_path(:person_id => person.id)
+  step %(I should see this notice "Logged In")
+  Rails.logger.debug("Logged in as #{person.full_name}")
+end
+
 step 'I am the Person:' do |table|
   (@person = Factory.create(:person, table.rows_hash)).tap do |person|
     Rails.logger.debug("Created person: #{person.inspect}")

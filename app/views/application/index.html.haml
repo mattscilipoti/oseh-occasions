@@ -32,6 +32,16 @@
           %p= event.name
           %p= event.start_date
 
+          %h3 Related Events
           %ul
             - event.children.each do |event|
               %li= link_to event.name, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
+
+          %h3 Who will attend?
+          %ul
+            - @current_member.household_members.each do |person|
+              %li
+                name
+                =person.name
+                attending?
+                =person.attending?(event)

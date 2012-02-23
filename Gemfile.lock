@@ -1,3 +1,8 @@
+PATH
+  remote: ~/develop/gems/table_diff
+  specs:
+    table_diff (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -32,6 +37,7 @@ GEM
     annotate (2.4.0)
     archive-tar-minitar (0.5.2)
     arel (3.0.0)
+    awesome_print (1.0.2)
     builder (3.0.0)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -208,6 +214,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  awesome_print
   capybara
   coffee-rails (~> 3.2.1)
   database_cleaner
@@ -227,6 +234,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   stamp
+  table_diff!
   turnip
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)

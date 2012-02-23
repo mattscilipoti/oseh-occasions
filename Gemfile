@@ -18,6 +18,7 @@ gem 'rspec-rails'
 gem 'stamp'
 gem 'turnip' # rspec "features"
 gem 'twitter-bootstrap-rails'
+#gem 'virtus' # attributes on steroids for PORO
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -32,9 +33,12 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'awesome_print'
+  gem 'database_cleaner'
   gem 'guard-spin',   :require => false
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'sqlite3'
+  gem 'table_diff', :require => false, :path => '~/develop/gems/table_diff'
 end
 
 group :development do

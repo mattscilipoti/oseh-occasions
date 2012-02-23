@@ -16,6 +16,10 @@ FactoryGirl.define do
     f.start_date { rand(90).days.from_now }
   end
 
+  factory :household do |f|
+
+  end
+
   factory :person do |f|
     f.first_name { Faker::Name.first_name }
     f.last_name  { Faker::Name.last_name }

@@ -1,6 +1,9 @@
 class Person < ActiveRecord::Base
   before_save :assemble_full_name
+  belongs_to :household, :inverse_of => :members
 
+  scope :dependent, where(:head_of_household => false)
+  scope :head_of_household, where(:head_of_household => true)
   # Breaks partial_name (argument) into its parts
   #   and checks to see if either part is in the full_name
   scope :with_name, lambda { |partial_name|
@@ -23,6 +26,10 @@ class Person < ActiveRecord::Base
 
   def self.full_names(filter = nil)
     with_name(filter).pluck :full_name
+  end
+
+  def household_members
+    household.members - [self]
   end
 
   def self.title_pattern
@@ -54,20 +61,24 @@ class Person < ActiveRecord::Base
   end
 end
 
+
+
 # == Schema Information
 #
 # Table name: people
 #
-#  id          :integer         not null, primary key
-#  title       :string(255)
-#  first_name  :string(255)
-#  middle_name :string(255)
-#  last_name   :string(255)
-#  name_suffix :string(255)
-#  main_phone  :string(255)
-#  main_email  :string(255)
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
-#  full_name   :string(255)
+#  id                :integer         not null, primary key
+#  title             :string(255)
+#  first_name        :string(255)
+#  middle_name       :string(255)
+#  last_name         :string(255)
+#  name_suffix       :string(255)
+#  main_phone        :string(255)
+#  main_email        :string(255)
+#  created_at        :datetime        not null
+#  updated_at        :datetime        not null
+#  full_name         :string(255)
+#  household_id      :integer
+#  head_of_household :boolean
 #
 

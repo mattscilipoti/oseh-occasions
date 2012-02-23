@@ -3,13 +3,22 @@ Feature: Who will be attending?
   The Organizers
   Want to know who will be attending
 
-  Scenario: Identify yourself (unique name)
-    As a participant,
-    It should be easy to find yourself in the list of People
+  Scenario: Choosing Family Members
+  As a participant,
+  It should be easy to indicate which of your family members are attending
 
-    Given I am the Person:
-      | full_name  | Art M. Green |
-      | main_phone | 123-456-7890 |
-    When I visit the home page
-    And I search by my "full name"
-    Then I should see that my information is filled in automatically
+    Given these households:
+      | Surname  | Parents                       | Kids                               | Main Phone | Main Email          |
+      | Fletcher | Linda Fynn-Fletcher, Lawrence | Candace Flynn, Phineas Flynn, Ferb | 555-1234   | 104days@example.com |
+
+    And I am "Linda Flynn-Fletcher"
+
+    When I visit the "Yom Kippur" event page
+    And I indicate that "Linda, Candace, & Ferb" will be attending
+    Then I should see these People:
+      | First Name | Attending? |
+      | Lynda      | Yes        |
+      | Lawrence   | No         |
+      | Candace    | Yes        |
+      | Phineas    | No         |
+      | Ferb       | Yes        |
