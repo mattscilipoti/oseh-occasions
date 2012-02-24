@@ -28,10 +28,6 @@ class Person < ActiveRecord::Base
     with_name(filter).pluck :full_name
   end
 
-  def household_members
-    household.members - [self]
-  end
-
   def self.title_pattern
     #from: http://en.wikipedia.org/wiki/Title#Formal_social_titles
     /Mr\.|Ms\.|Mrs\.|Miss|Gen|Hon|Rabbi/
@@ -52,6 +48,10 @@ class Person < ActiveRecord::Base
       self.last_name   = parts[2]
       self.name_suffix = parts[3]
     end
+  end
+
+  def household_members
+    household ? household.members - [self] : []
   end
 
   private

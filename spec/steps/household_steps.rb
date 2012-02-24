@@ -5,7 +5,7 @@ step "these Households:" do |table|
     attrs = household_attributes.attributize_keys
     family_name = attrs[:family_name]
     # TODO: duplication
-    head_names = household_attributes.delete(:heads_of_household).split(', ')
+    head_names = household_attributes.delete(:heads_of_household).try(:split, ', ')
     heads = head_names.collect { |name|
       family_name_is_simple = (family_name =~ /[\/-]/).blank?
       name_does_not_have_last_name = !name.include?(' ')

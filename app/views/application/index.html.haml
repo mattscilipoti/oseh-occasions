@@ -16,32 +16,32 @@
     %p
       %label Email:
       %span#main_email= @person.main_email
--else
-  %h1 Shalom
-  #upcoming_events.tabbable.tabs-left
-    - upcoming_events = Event.upcoming(5)
-    %h2 Upcoming Events
-    %ul.nav.nav-tabs
-      - upcoming_events.each_with_index do |event, index|
-        -caption = "#{event.start_date.stamp("10/01")} | #{event.name.truncate(15)}"
-        %li{:class => ('active' if index==0)}= link_to caption, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
 
-    .tab-content
-      - upcoming_events.each_with_index do |event, index|
-        .tab-pane{:id => "tab-#{event.name.parameterize}", :class => ('active' if index==0)}
-          %p= event.name
-          %p= event.start_date
+%h1 Shalom
+#upcoming_events.tabbable.tabs-left
+  - upcoming_events = Event.upcoming(5)
+  %h2 Upcoming Events
+  %ul.nav.nav-tabs
+    - upcoming_events.each_with_index do |event, index|
+      -caption = "#{event.start_date.stamp("10/01")} | #{event.name.truncate(15)}"
+      %li{:class => ('active' if index==0)}= link_to caption, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
 
-          %h3 Related Events
-          %ul
-            - event.children.each do |event|
-              %li= link_to event.name, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
+  .tab-content
+    - upcoming_events.each_with_index do |event, index|
+      .tab-pane{:id => "tab-#{event.name.parameterize}", :class => ('active' if index==0)}
+        %p= event.name
+        %p= event.start_date
 
-          %h3 Who will attend?
-          %ul
-            - @current_member.household_members.each do |person|
-              %li
-                name
-                =person.name
-                attending?
-                =person.attending?(event)
+        %h3 Related Events
+        %ul
+          - event.children.each do |event|
+            %li= link_to event.name, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
+
+        %h3 Who will attend?
+        %ul
+          - current_user.household_members.each do |person|
+            %li
+              name
+              =person.name
+              attending?
+              =person.attending?(event)
