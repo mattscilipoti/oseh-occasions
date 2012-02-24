@@ -35,9 +35,11 @@ end
 group :development, :test do
   gem 'awesome_print'
   gem 'database_cleaner'
-  gem 'guard-spin',   :require => false
-  gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'sqlite3'
+  unless ENV["CI"] # travis, etc
+    gem 'guard-spin',   :require => false
+    gem 'ruby-debug19', :require => 'ruby-debug'
+    gem 'sqlite3'
+  end
   # Use table_diff directly from git until they fix
   # https://github.com/davelyon/table_diff/issues/1
   gem 'table_diff', :require => false, :git => 'git://github.com/davelyon/table_diff.git'
