@@ -3,7 +3,7 @@ Feature: Who will be attending?
   The Organizers
   Want to know who will be attending
 
-  @person
+  @event @person
   Scenario: Choosing Family Members
   As a participant,
   It should be easy to indicate which of your family members are attending
