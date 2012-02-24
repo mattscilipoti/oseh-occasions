@@ -15,6 +15,7 @@ development:
 test:
   adapter: sqlite3
   database: ":memory:"
+  verbosity: quiet # |silent
 #  encoding: utf8
 #  timeout: 500
 
