@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
     session[:person_id] = nil
     redirect_to '/', :notice => "Logged out."
   end
+
+  private
+
+  def login(person_id)
+    session[:person_id] = person_id
+  end
 end

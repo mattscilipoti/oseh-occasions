@@ -1,5 +1,11 @@
 class SessionsController < ApplicationController
+  respond_to :html
+
   def new
+
+  end
+
+  def create
     unless person_id = params[:person_id]
       person_args = params[:person]
       if person_args
@@ -12,7 +18,7 @@ class SessionsController < ApplicationController
         end
       end
     end
-    session[:person_id] = person_id
-    redirect_to :back
+    login(person_id)
+    redirect_to :back, :notice => "Congratulations.  You are Logged In."
   end
 end

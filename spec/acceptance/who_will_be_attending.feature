@@ -3,13 +3,14 @@ Feature: Who will be attending?
   The Organizers
   Want to know who will be attending
 
+  @person
   Scenario: Choosing Family Members
   As a participant,
   It should be easy to indicate which of your family members are attending
 
-    Given these households:
-      | Surname  | Parents                       | Kids                               | Main Phone | Main Email          |
-      | Fletcher | Linda Fynn-Fletcher, Lawrence | Candace Flynn, Phineas Flynn, Ferb | 555-1234   | 104days@example.com |
+    Given these Households:
+      | Family Name    | Heads of Household                      | Dependents                                  | Main Phone |
+      | Fletcher/Flynn | Linda Flynn-Fletcher, Lawrence Fletcher | Candace Flynn, Phineas Flynn, Ferb Fletcher | 555-1234   |
 
     And I am "Linda Flynn-Fletcher"
 
