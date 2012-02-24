@@ -39,7 +39,7 @@ group :development, :test do
     gem 'guard-spin',   :require => false
     gem 'ruby-debug19', :require => 'ruby-debug'
   end
-  gem 'sqlite3'
+  gem "sqlite3", :platform => [:ruby, :mswin, :mingw]
   # Use table_diff directly from git until they fix
   # https://github.com/davelyon/table_diff/issues/1
   gem 'table_diff', :require => false, :git => 'git://github.com/davelyon/table_diff.git'
