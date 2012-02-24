@@ -1,5 +1,6 @@
-PATH
-  remote: ~/develop/gems/table_diff
+GIT
+  remote: git://github.com/davelyon/table_diff.git
+  revision: 4db6ae81eb477cc6a0908904e5942a541b3a1480
   specs:
     table_diff (0.0.1)
 

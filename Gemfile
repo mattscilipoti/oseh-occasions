@@ -38,7 +38,10 @@ group :development, :test do
   gem 'guard-spin',   :require => false
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'sqlite3'
-  gem 'table_diff', :require => false, :path => '~/develop/gems/table_diff'
+  # Use table_diff directly from git until they fix
+  # https://github.com/davelyon/table_diff/issues/1
+  gem 'table_diff', :require => false, :git => 'git://github.com/davelyon/table_diff.git'
+#  gem 'table_diff', :require => false, :path => '~/develop/gems/table_diff'
 end
 
 group :development do
