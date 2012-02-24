@@ -33,6 +33,10 @@ class Person < ActiveRecord::Base
     /Mr\.|Ms\.|Mrs\.|Miss|Gen|Hon|Rabbi/
   end
 
+  def attending?(event)
+    false#event && event.members.include?(self)
+  end
+
   def full_name
     super || assemble_full_name
   end

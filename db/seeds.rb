@@ -19,9 +19,21 @@ Factory.create(:event_full, :name => 'Yom Kippur', :start_date => hh.start_date 
 5.times { Factory :event_full }
 
 
+
+solomon = Factory.create :household, :family_name => 'Solomon'
+
 Factory.create :person_full,
         :full_name  => "Linda Solomon",
-        :main_email => 'ls@example.com'
+        :main_email => 'ls@example.com',
+        :household => solomon,
+        :head_of_household => true
+
+Factory.create :person_full,
+        :full_name  => "Art Solomon",
+        :main_email => 'as@example.com',
+        :household => solomon,
+        :head_of_household => true
+
 
 Factory.create :person_full,
         :full_name => "Cynthia Elizabeth"
