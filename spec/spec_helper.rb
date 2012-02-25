@@ -2,6 +2,9 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 
+# last stand, ensure migrated.
+ActiveRecord::Migrator.migrate('db/migrate')
+
 require 'rspec/rails'
 require 'rspec/autorun'
 
