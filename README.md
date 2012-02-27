@@ -1,5 +1,3 @@
-This readme is in Markup format (
-
 Oseh Occasions (working title, we welcome suggestions)
 ===============================
 
@@ -60,3 +58,6 @@ To run manually:
 
     $ spin push spec
     $ spin push spec/model/person_spec.rb:43
+
+----
+This readme is in [Markup format](http://daringfireball.net/projects/markdown/syntax).
