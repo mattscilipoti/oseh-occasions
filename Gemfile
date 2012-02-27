@@ -13,7 +13,6 @@ gem 'haml-rails'
 gem 'heroku', :require => false
 gem 'jquery-rails'
 gem 'rake'
-gem 'rake-hooks', '1.2.1',  :require => false
 gem 'rspec-rails'
 #gem 'ruby-gntp',  :require => false
 gem 'stamp'
@@ -40,6 +39,7 @@ group :development, :test do
     gem 'guard-spin',   :require => false
     gem 'ruby-debug19', :require => 'ruby-debug'
   end
+  gem 'rake-hooks', :require => false
   gem "sqlite3", :platform => [:ruby, :mswin, :mingw]
   # Use table_diff directly from git until they fix
   # https://github.com/davelyon/table_diff/issues/1

@@ -229,7 +229,7 @@ DEPENDENCIES
   pg
   rails (= 3.2.1)
   rake
-  rake-hooks (= 1.2.1)
+  rake-hooks
   rspec-rails
   ruby-debug19
   sass-rails (~> 3.2.3)

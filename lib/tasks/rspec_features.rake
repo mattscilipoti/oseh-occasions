@@ -13,9 +13,12 @@ namespace :spec do
   end
 end
 
-include Rake::Hooks
-#run acceptance specs after other specs
-after :spec do
-  Rake::Task['spec:acceptance'].invoke
+#TODO "heroku indicated that rake-hooks (1.2.3) had invalid gemspec
+unless Rails.env.production?
+  include Rake::Hooks
+  #run acceptance specs after other specs
+  after :spec do
+    Rake::Task['spec:acceptance'].invoke
+  end
 end
 
