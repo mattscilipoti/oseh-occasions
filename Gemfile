@@ -13,7 +13,7 @@ gem 'haml-rails'
 gem 'heroku', :require => false
 gem 'jquery-rails'
 gem 'rake'
-gem 'rake-hooks', :require => false
+gem 'rake-hooks', '1.2.1',  :require => false
 gem 'rspec-rails'
 #gem 'ruby-gntp',  :require => false
 gem 'stamp'
