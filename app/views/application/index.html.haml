@@ -2,20 +2,8 @@
 
 -if @person
   %h1 Welcome #{@person.first_name}
+  =render @person
 
-  #person_information
-    %p
-      %label Name:
-      %span#first_name= @person.first_name
-      %span#middle_name= @person.middle_name
-      %span#last_name= @person.last_name
-
-    %p
-      %label Phone:
-      %span#main_phone= @person.main_phone
-    %p
-      %label Email:
-      %span#main_email= @person.main_email
 
 %h1 Oseh Shalom
 #upcoming_events.tabbable.tabs-left
