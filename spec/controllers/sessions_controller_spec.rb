@@ -1,8 +1,14 @@
 require 'spec_helper'
 
 describe SessionsController do
+  # TODO: need to move this every controller spec can use it.
+  def login_as_member
+    controller.stub(:current_user => Factory.build(:person))
+  end
+
   describe "GET create" do
     before :each do
+      login_as_member
       request.env["HTTP_REFERER"] = 'http://karma.dev'
     end
 

@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   respond_to :html
+  skip_filter :authenticate
 
   def new
 
@@ -19,6 +20,10 @@ class SessionsController < ApplicationController
       end
     end
     login(person_id)
-    redirect_to :back, :notice => "Congratulations.  You are Logged In."
+    if current_user
+      redirect_to root_path, :notice => "Congratulations.  You are Logged In."
+    else
+      render :new, :alert => "Sorry, we couldn't find you.  Try again."
+    end
   end
 end

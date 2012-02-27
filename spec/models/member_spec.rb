@@ -22,16 +22,16 @@ end
 
 describe Person, '(scopes)' do
   before :each do
-    [ 'Rabbi Douglas Heifetz',
-      'Gen. Douglas MacArthur',
+    # Rabbi Doug already exists
+    [ 'Gen. Douglas MacArthur',
       'Ben Hur',
       'Abraham'
     ].each {|full_name| Factory :person_full, :full_name => full_name }
   end
 
   describe '#full_names' do
-    { 'D'      => ['Gen. Douglas MacArthur', 'Rabbi Douglas Heifetz'],
-      'Doug'   => ['Gen. Douglas MacArthur', 'Rabbi Douglas Heifetz'],
+    { 'D'      => ['Gen. Douglas MacArthur', 'Rabbi Douglas T. Heifetz'],
+      'Doug'   => ['Gen. Douglas MacArthur', 'Rabbi Douglas T. Heifetz'],
       'Hu'     => ['Ben Hur', 'Gen. Douglas MacArthur'],
       'D. Arthur'  => ['Gen. Douglas MacArthur'],
       'D. MacArthur'  => ['Gen. Douglas MacArthur'],

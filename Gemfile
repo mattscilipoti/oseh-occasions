@@ -5,6 +5,7 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'awesome_print'
 gem 'database_cleaner', :require => false
 gem 'factory_girl_rails'
 gem 'faker'

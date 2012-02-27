@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 
 # last stand, ensure migrated.
+ActiveRecord::Migration.verbose = InMemoryDb.verbosity.blank?
 ActiveRecord::Migrator.migrate('db/migrate')
 
 require 'rspec/rails'
@@ -38,3 +39,6 @@ RSpec.configure do |config|
 end
 
 DatabaseCleaner.clean_with :truncation
+
+# ensure we have one, known user for authentication in tests
+Factory :person_full, :full_name => 'Rabbi Douglas T. Heifetz'
