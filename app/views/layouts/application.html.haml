@@ -9,11 +9,8 @@
     = yield :meta
     = csrf_meta_tags
   %body
-    - flash.each do |name, msg|
-      .flash{:id => "flash_#{name}", :class => "#{name}"}
-        %p
-          = msg
-          -#= link_to('x', '#', :id => 'close-flash', :class => 'hide')
+    = render 'layouts/flash_notification'
+
     .container-fluid
       .row-fluid
         .span2
