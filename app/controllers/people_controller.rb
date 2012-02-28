@@ -3,10 +3,10 @@ class PeopleController < ApplicationController
 
   def index
     @scopes = params[:q] || {}
-    @persons = Person.scoped
+    @people = Person.scoped
     @scopes.each do |scope, args|
       logger.debug("DBG: scoping Person: #{scope} => #{args}")
-      @persons = @persons.send(scope, args)
+      @people = @people.send(scope, args)
     end
 
 #    if @scopes && @people.size == 1
@@ -14,7 +14,7 @@ class PeopleController < ApplicationController
 #      session[:person_id] = @person.id
 #      redirect_to :back, :notice => "We found you, #{@person.first_name}!"
 #    else
-      respond_with @persons
+      respond_with @people
 #    end
   end
 end
