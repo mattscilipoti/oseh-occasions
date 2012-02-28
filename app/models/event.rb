@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   has_many :children, :class_name => Event.name, :foreign_key => 'parent_id'
   scope :upcoming, lambda {|limit|
     limit ||= 5
-    where("start_date > #{Date.today}").order(:start_date).limit(limit)
+    where("start_date > ?", Date.today).order(:start_date).limit(limit)
   }
 end
 
