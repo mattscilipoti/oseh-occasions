@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate
-    redirect_to new_session_path unless current_user
+    redirect_to(new_session_path, :notice => "Please login.") unless current_user
   end
 
   def current_user

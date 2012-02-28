@@ -9,9 +9,14 @@
     = yield :meta
     = csrf_meta_tags
   %body
-    = render 'layouts/flash_notification'
 
     .container-fluid
+      .row-fluid
+        .span12
+          - flash.each do |level, msg|
+            .flash.alert-message{:id => "flash_#{level}", :class => "#{level} alert-#{flash_class(level)}"}
+              %p= msg
+
       .row-fluid
         .span2
           <!--Sidebar content-->
