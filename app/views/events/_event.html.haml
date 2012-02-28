@@ -6,14 +6,17 @@
   - event.children.each do |event|
     %li= link_to event.name, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
 
-  %h3 Who will attend?
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Attending?
-    %tbody
-      - current_user.household_members.each do |person|
+  - if !current_user
+    Please #{link_to "login", login_path} in order to RSVP.
+  -else
+    %h3 Who will attend?
+    %table
+      %thead
         %tr
-          %td= person.full_name
-          %td= person.attending?(event)
+          %th Name
+          %th Attending?
+      %tbody
+        - current_user.household_members.each do |person|
+          %tr
+            %td= person.full_name
+            %td= person.attending?(event)

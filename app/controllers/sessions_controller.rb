@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         else
           full_name = person_args[:full_name]
           person = Person.find_by_full_name(full_name)
-          person_id = person.id
+          person_id = person && person.id
         end
       end
     end
