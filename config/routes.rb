@@ -1,6 +1,7 @@
 OsehOccasions::Application.routes.draw do
   root :to => 'application#index'
-  match 'logout', :to => 'application#logout'
+  match 'login',  :to => 'sessions#new'
+  match 'logout', :to => 'sessions#delete'
   resources :events, :only => [:index, :show]
   resources :people
   resources :sessions

@@ -10,16 +10,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def logout
-    @current_user = nil
-    session[:person_id] = nil
-    redirect_to '/', :notice => "Logged out."
-  end
 
   private
 
   def authenticate
-    redirect_to(new_session_path, :notice => "Please login.") unless current_user
+    redirect_to(login_path, :notice => "Please login.") unless current_user
   end
 
   def current_user

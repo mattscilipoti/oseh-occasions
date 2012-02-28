@@ -26,4 +26,10 @@ class SessionsController < ApplicationController
       render :new, :alert => "Sorry, we couldn't find you.  Try again."
     end
   end
+
+  def delete
+    @current_user = nil
+    session[:person_id] = nil
+    redirect_to '/', :notice => "Logged out."
+  end
 end
