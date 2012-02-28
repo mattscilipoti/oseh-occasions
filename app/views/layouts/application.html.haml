@@ -13,9 +13,7 @@
     .container-fluid
       .row-fluid
         .span12
-          - flash.each do |level, msg|
-            .flash.alert-message{:id => "flash_#{level}", :class => "#{level} alert-#{flash_class(level)}"}
-              %p= msg
+          = render 'layouts/flash_notification'
 
       .row-fluid
         .span2
