@@ -1,10 +1,12 @@
 -# TODO: use twitter/bootstrap grid system
 
--if @person
-  %h1 Welcome #{@person.first_name}
-  =render @person
+= content_for :left_side_bar do
+  -if @person
+    %hr
+    #welcome
+      %h2 Welcome #{@person.first_name}
+      =render @person
 
-%hr
 
 %h1 Oseh Shalom
 #upcoming_events.tabbable.tabs-left
