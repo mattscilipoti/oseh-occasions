@@ -1,15 +1,18 @@
-%h1 Listing events
-
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @events.each do |event|
+%h1 Events
+%table{:class => "table table-striped"}
+  %thead
     %tr
-      %td= event.name
-      %td= link_to 'Show', event
+      %th ID
+      %th
+        = t("activerecord.attributes.event.name", :default => t("activerecord.labels.name", :default => "Name"))
+      %th Created at
+      %th Actions
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td= event.id
+        %td= link_to event.name, event_path(event)
+        %td= event.created_at
+        %td
+          = link_to "Show", event_path(event)
 
-%br
