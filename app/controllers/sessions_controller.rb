@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
     end
     login(person_id)
     if current_user
-      redirect_to root_path, :success => "Congratulations.  You are Logged In."
+      redirect_to root_path, :flash => {:success => "Shalom, #{current_user.first_name}"}
     else
       render :new, :alert => "Sorry, we couldn't find you.  Try again."
     end

@@ -1,22 +1,25 @@
 %h1= event.name
 %p= event.start_date
 
-%h3 Related Events
-%ul
-  - event.children.each do |event|
-    %li= link_to event.name, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
+- related_events = event.children
+- unless related_events.blank?
+  %h3 Related Events
+  %ul
+    - related_events.each do |event|
+      %li= link_to event.name, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
 
-  - if !current_user
-    Please #{link_to "login", login_path} in order to RSVP.
-  -else
-    %h3 Who will attend?
-    %table
-      %thead
+%hr
+- if !current_user
+  Please #{link_to "login", login_path} in order to RSVP.
+-else
+  %h3 Who will attend?
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Attending?
+    %tbody
+      - current_user.household_members.each do |person|
         %tr
-          %th Name
-          %th Attending?
-      %tbody
-        - current_user.household_members.each do |person|
-          %tr
-            %td= person.full_name
-            %td= person.attending?(event)
+          %td= person.full_name
+          %td= person.attending?(event)
