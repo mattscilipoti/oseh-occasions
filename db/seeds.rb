@@ -9,6 +9,12 @@
 require 'database_cleaner'
 DatabaseCleaner.clean_with :truncation
 
+# default admin user for rails_admin
+User.create(
+      :email => "admin",
+      :password => "oseh_shalom"
+    )
+
 # demo data
 # TODO: need correct date
 hh = Factory.create(:event_full, :name => 'High Holidays')

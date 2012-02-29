@@ -12,6 +12,7 @@ gem 'faker'
 gem 'haml-rails'
 gem 'heroku', :require => false
 gem 'jquery-rails'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'rake'
 gem 'rspec-rails'
 #gem 'ruby-gntp',  :require => false

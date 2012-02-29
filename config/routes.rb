@@ -1,4 +1,8 @@
 OsehOccasions::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  devise_for :users
+
   root :to => 'application#index'
   match 'login',  :to => 'sessions#new'
   match 'logout', :to => 'sessions#delete'
