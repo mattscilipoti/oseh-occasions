@@ -45,6 +45,14 @@
               %li= link_to "Link 1", "/path1"
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
+
+            -#= content_for :left_side_bar do
+            -if @person
+              %hr
+              #person_summary
+                =render @person
+
+
             = yield :left_side_bar
         .span9
           <!-- main content -->
