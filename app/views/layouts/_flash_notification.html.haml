@@ -1,4 +1,4 @@
 - flash.each do |level, msg|
-  .flash.alert-message{:id => "flash_#{level}", :class => "#{level} alert-#{flash_class(level)}"}
-    %p= msg
-    -#= link_to('x', '#', :id => 'close-flash', :class => 'hide')
+  .flash.alert{:id => "flash_#{level}", :class => "#{level} alert-#{flash_class(level)}"}
+    =msg
+    =link_to raw("&times;"), '#', :class => "close", :data => {:dismiss => "alert"}, :title => "Close this message."
