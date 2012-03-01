@@ -7,6 +7,7 @@ gem 'rails', '3.2.1'
 
 gem 'awesome_print'
 gem 'database_cleaner', :require => false
+gem 'devise'
 gem 'factory_girl_rails'
 gem 'faker'
 gem 'haml-rails'
