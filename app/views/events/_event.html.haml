@@ -9,9 +9,9 @@
       %li= link_to event.name, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
 
 %hr
-- if !current_user
+- unless current_person
   Please #{link_to "login", login_path} in order to RSVP.
--else
+- else
   %h3 Who will attend?
   %table
     %thead
@@ -19,7 +19,7 @@
         %th Name
         %th Attending?
     %tbody
-      - current_user.household_members.each do |person|
+      - current_person.household_members.each do |person|
         %tr
           %td= person.full_name
           %td= person.attending?(event)

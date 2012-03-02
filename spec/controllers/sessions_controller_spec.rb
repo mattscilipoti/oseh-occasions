@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SessionsController do
   # TODO: need to move this every controller spec can use it.
   def login_as_member
-    controller.stub(:current_user => Factory.build(:person))
+    controller.stub(:current_person => Factory.build(:person))
   end
 
   describe "GET create" do

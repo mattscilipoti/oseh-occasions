@@ -20,15 +20,16 @@ class SessionsController < ApplicationController
       end
     end
     login(person_id)
-    if current_user
-      redirect_to root_path, :flash => {:success => "Shalom, #{current_user.first_name}"}
+
+    if current_person
+      redirect_to root_path, :flash => {:success => "Shalom, #{current_person.first_name}"}
     else
       render :new, :alert => "Sorry, we couldn't find you.  Try again."
     end
   end
 
   def delete
-    @current_user = nil
+    @current_person = nil
     session[:person_id] = nil
     redirect_to '/', :notice => "Logged out."
   end
