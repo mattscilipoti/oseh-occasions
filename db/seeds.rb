@@ -10,10 +10,8 @@ require 'database_cleaner'
 DatabaseCleaner.clean_with :truncation
 
 # default admin user for rails_admin
-User.create(
-      :email => "admin",
-      :password => "oseh_shalom"
-    )
+User.create!(:email => "admin@oseh_shalom.org", :password => "oseh_shalom")
+#User.create!(:email => "matt@scilipoti.name",   :password => "oseh_shalom")
 
 # demo data
 # TODO: need correct date
