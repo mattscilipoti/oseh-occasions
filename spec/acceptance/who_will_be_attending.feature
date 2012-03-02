@@ -3,6 +3,12 @@ Feature: Who will be attending?
   The Organizers
   Want to know who will be attending
 
+  Background:
+    Given these Events:
+      | Name       |
+      | Yom Kippur |
+
+
   Scenario: Only Logged in Users can RSVP
     When I visit the "Yom Kippur" event page
     Then I should see "Please login in order to RSVP"
