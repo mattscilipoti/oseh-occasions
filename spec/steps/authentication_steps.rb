@@ -7,7 +7,7 @@ steps_for :global do
       fill_in 'person_full_name', :with => person.full_name
       submit_form
     end
-    step %(I should see this notice "Logged In")
+    step %(I should see this notice "Shalom")
     Rails.logger.debug("Logged in as #{person.full_name}")
   end
 
