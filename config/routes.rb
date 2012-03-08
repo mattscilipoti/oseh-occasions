@@ -8,7 +8,7 @@ OsehOccasions::Application.routes.draw do
   match 'logout', :to => 'sessions#delete'
   match 'sign_in',  :to => 'sessions#new'
   match 'sign_out', :to => 'sessions#delete'
-  resources :events, :only => [:index, :show]
+  resources :events, :only => [:index, :show, :update]
   resources :people
   resources :sessions
 

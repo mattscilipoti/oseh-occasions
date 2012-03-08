@@ -4,8 +4,9 @@ step 'I indicate that :attendees will be attending' do |attendees|
   attendee_list = attendees.gsub('&', '').split(',')
   attendee_list.each do |name|
     person = @current_user.household.members.with_name(name).first
-    @current_event.attendees << person
+    check(dom_id(person, :attending))
   end
+  submit_form
 end
 
 

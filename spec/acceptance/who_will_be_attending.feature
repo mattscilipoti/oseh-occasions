@@ -1,4 +1,3 @@
-@wip
 Feature: Who will be attending?
   In order to provide enough food, services, and manage budget
   The Organizers
