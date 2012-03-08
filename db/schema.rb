@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229115932) do
+ActiveRecord::Schema.define(:version => 20120307215951) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(:version => 20120229115932) do
 
   add_index "events", ["parent_id"], :name => "index_events_on_parent_id"
   add_index "events", ["start_date"], :name => "index_events_on_start_date"
+
+  create_table "events_people", :id => false, :force => true do |t|
+    t.integer "event_id"
+    t.integer "person_id"
+  end
+
+  add_index "events_people", ["event_id", "person_id"], :name => "index_events_people_on_event_id_and_person_id"
+  add_index "events_people", ["person_id", "event_id"], :name => "index_events_people_on_person_id_and_event_id"
 
   create_table "households", :force => true do |t|
     t.string "family_name"

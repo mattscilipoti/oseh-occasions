@@ -1,3 +1,4 @@
+@wip
 Feature: Who will be attending?
   In order to provide enough food, services, and manage budget
   The Organizers
@@ -26,9 +27,11 @@ Feature: Who will be attending?
 
     When I visit the "Yom Kippur" event page
     And I indicate that "Linda, Candace, & Ferb" will be attending
+
+    When I visit the "Yom Kippur" event page
     Then I should see these People:
       | First Name | Attending? |
-      | Lynda      | Yes        |
+      | Linda      | Yes        |
       | Lawrence   | No         |
       | Candace    | Yes        |
       | Phineas    | No         |

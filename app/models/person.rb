@@ -1,6 +1,7 @@
 class Person < ActiveRecord::Base
   before_save :assemble_full_name
   belongs_to :household, :inverse_of => :members
+  has_and_belongs_to_many :events
 
   scope :dependent, where(:head_of_household => false)
   scope :head_of_household, where(:head_of_household => true)
@@ -34,7 +35,7 @@ class Person < ActiveRecord::Base
   end
 
   def attending?(event)
-    false#event && event.members.include?(self)
+    event && events.include?(event)
   end
 
   def full_name

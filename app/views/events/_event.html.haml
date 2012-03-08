@@ -16,10 +16,10 @@
   %table
     %thead
       %tr
-        %th Name
+        %th First Name
         %th Attending?
     %tbody
-      - current_person.household_members.each do |person|
+      - current_person.household.members.each do |person|
         %tr
-          %td= person.full_name
-          %td= person.attending?(event)
+          %td= person.first_name
+          %td= person.attending?(event) ? 'Yes' : 'No'

@@ -9,6 +9,7 @@ steps_for :global do
     end
     step %(I should see this notice "Shalom")
     Rails.logger.debug("Logged in as #{person.full_name}")
+    @current_user = person
   end
 
   step 'I login successfully' do
