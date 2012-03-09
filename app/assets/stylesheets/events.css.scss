@@ -1,3 +1,19 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$color-event-active: white;
+//TODO: soft pastel
+$color-event: yellow;
+
+.event {
+  background-color: $color-event-active;
+
+  .active {
+    background-color: $color-event-active;
+  }
+}
+
+.events > .nav-tabs  {
+  background-color: $color-event;
+}
