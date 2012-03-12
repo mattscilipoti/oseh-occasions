@@ -1,4 +1,8 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins";
 
+h3 { padding-bottom: 10px; }
+
+.event .start_date { color: lighten($color-text,25%);}

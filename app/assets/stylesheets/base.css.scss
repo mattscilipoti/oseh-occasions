@@ -1,3 +1,5 @@
+$color_text: black;
+
 body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
 
 .navbar { margin-top: 86px; } // move navbar below image
@@ -7,9 +9,9 @@ body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
 // ...TABS.........................
 .tabs-left .nav-tabs {
   margin-right: 4px; // pull contents closer to tabs
-  min-width: 170px;
+  min-width: 190px;
   li a {
-    color: black;
+    color: $color_text;
   }
   .active a, .active a:hover {
     background: url("overlay-sm.png") top left repeat; // translucent background
