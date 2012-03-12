@@ -10,15 +10,17 @@ class Event < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: events
 #
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  start_date :datetime
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  parent_id  :integer
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  start_date  :datetime
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#  parent_id   :integer
+#  description :text
 #
 
