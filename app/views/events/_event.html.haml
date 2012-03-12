@@ -1,13 +1,16 @@
+- related_events = event.children
+
 %h2= event.name
-%h3.start_date= event.start_date.stamp("Sunday, May 1, 2000 10:00 pm")
+%h3.start_date= event.start_date.stamp(date_stamp(:long, related_events.blank?))
 %p.description= event.description
 
-- related_events = event.children
 - unless related_events.blank?
   %h3 Related Events
   %ul
     - related_events.each do |event|
-      %li= link_to event.name, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
+      %li
+        =link_to "#{event.name}; ", "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
+        = event.start_date.stamp(date_stamp(:short))
 
 %hr
 - unless current_person
