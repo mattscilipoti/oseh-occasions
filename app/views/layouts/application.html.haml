@@ -21,7 +21,7 @@
 
 
   %body
-    .navbar.navbar-fixed-top
+    %nav.navbar.navbar-fixed-top
       .navbar-inner
         .container-fluid
           %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
@@ -35,7 +35,7 @@
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
 
-    .container-fluid
+    #content.container-fluid
       .row-fluid
         .span3
           <!-- Sidebar content -->
@@ -71,7 +71,7 @@
           = yield
 
       %footer
-        %p &copy; Company 2012
+        %p &copy; 2012 Oseh Shalom
     /
       Le javascript
       \==================================================

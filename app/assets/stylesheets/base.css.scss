@@ -1,0 +1,27 @@
+body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
+
+.navbar { margin-top: 86px; } // move navbar below image
+
+#content { margin-top: 50px; } // move contents below navbar
+
+// ...TABS.........................
+.tabs-left .nav-tabs {
+  margin-right: 4px; // pull contents closer to tabs
+  min-width: 170px;
+  li a {
+    color: black;
+  }
+  .active a, .active a:hover {
+    background: url("overlay-sm.png") top left repeat; // translucent background
+    font-weight: bold;
+  }
+  li a:hover {
+    background: white;
+  }
+}
+
+.tab-content {
+  background: url("overlay-sm.png") top left repeat; // translucent background
+
+  padding: 20px;
+}

@@ -1,5 +1,5 @@
 %h1= event.name
-%p= event.start_date
+%p.start_date= l event.start_date
 
 - related_events = event.children
 - unless related_events.blank?
