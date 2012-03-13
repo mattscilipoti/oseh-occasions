@@ -1,0 +1,14 @@
+%nav.navbar.navbar-fixed-top
+  .navbar-inner
+    .container-fluid
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href => "/"}Home
+      .container-fluid.nav-collapse
+        %ul.nav
+          %li= link_to "Link 1", "#"
+          %li= link_to "Link 2", "#"
+        %ul.nav.pull-right
+          %li= link_to "Admin", "/admin"

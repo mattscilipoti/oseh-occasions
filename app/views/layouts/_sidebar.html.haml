@@ -1,0 +1,26 @@
+<!-- Sidebar content -->
+-#.well.sidebar-nav.accordion
+  .accordion-group
+    - upcoming_events = Event.upcoming(5)
+    .accordion-heading
+      %a.accordion-toggle{:data => {:target => 'tabs_for_upcoming_events', :toggle => 'collapse'}, :href => '#tabs_for_upcoming_events'}
+        Upcoming Events
+    #tabs_for_upcoming_events.accordion-body.collapse.tabs-left
+      %ul.nav.nav-tabs
+        - upcoming_events.each_with_index do |event, index|
+          -caption = "#{event.start_date.stamp("10/01")} | #{event.name.truncate(15)}"
+          %li{:class => ('active' if index==0)}= link_to caption, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
+
+
+  = yield :left_side_bar
+
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{:data => {:target => 'user_summary', :toggle => 'collapse'}, :href => '#user_summary'}
+        Your Info
+    #user_summary.accordion-body.collapse.in
+      -if @person
+        %hr
+        #person_summary
+          =render @person
+

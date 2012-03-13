@@ -2,7 +2,6 @@
 - upcoming_events = Event.upcoming(15)
 
 #upcoming_events.tabbable.tabs-left.events
-  %br
   %h2 Upcoming Events for Oseh Shalom
   %ul.nav.nav-tabs
     - upcoming_events.each_with_index do |event, index|
