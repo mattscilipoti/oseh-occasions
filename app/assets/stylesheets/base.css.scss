@@ -9,7 +9,7 @@ body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
 // ...TABS.........................
 .tabs-left .nav-tabs {
   margin-right: 4px; // pull contents closer to tabs
-  min-width: 190px;
+  width: 200px;
   li a {
     color: $color-text;
   }
@@ -30,4 +30,10 @@ body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
 .sign_in {
   @include translucent-background;
   padding: 20px;
+}
+
+.truncated {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

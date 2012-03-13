@@ -6,8 +6,8 @@
   %ul.nav.nav-tabs
     - upcoming_events.each_with_index do |event, index|
       -# TODO: truncate using jQuery?
-      -caption = "#{event.start_date.stamp("10/01")} | #{event.name.truncate(18)}"
-      %li{:class => ('active' if index==0)}= link_to caption, "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}, :title => event.name
+      -caption = "#{event.start_date.stamp("10/01")} | #{event.name}"
+      %li{:class => ('active' if index==0)}= link_to caption, "#tab-#{event.name.parameterize}", :class => 'truncated', :data => {:toggle => "tab"}, :title => event.name
 
   #upcoming_event.event
     .tab-content
