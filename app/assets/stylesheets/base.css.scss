@@ -31,9 +31,7 @@ body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
 }
 
 .tab-content {
-  @include border-radius(0 3px 3px 0);
-  @include translucent-background;
-  padding: 20px;
+  @include tab-contents-container;
 }
 
 .sign_in {

@@ -1,5 +1,12 @@
 $color-text: black;
+$tab-border-radius: 4px;
 
 @mixin translucent-background {
   background: url("overlay-sm.png") top left repeat;
+}
+
+@mixin tab-contents-container {
+  @include border-radius(0 $tab-border-radius $tab-border-radius 0);
+  @include translucent-background;
+  padding: 20px;
 }
