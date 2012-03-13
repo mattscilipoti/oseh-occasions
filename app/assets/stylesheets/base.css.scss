@@ -1,6 +1,14 @@
 @import 'mixins';
 
 body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
+#home_link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 80px;
+  cursor: pointer;
+}
 
 .navbar { margin-top: 26px; } // move navbar below image
 
