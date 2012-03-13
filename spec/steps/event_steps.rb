@@ -1,6 +1,6 @@
 step "these Events:" do |table|
   table.hashes.each do |attrs|
-    Factory.create :event, attrs.attributize_keys
+    Factory.create :event_full, attrs.attributize_keys
   end
 end
 

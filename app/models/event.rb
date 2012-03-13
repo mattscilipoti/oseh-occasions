@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
     limit ||= 5
     where("start_date > ?", Date.today).order(:start_date).limit(limit)
   }
+
+  validates_presence_of :name, :start_date
 end
 
 

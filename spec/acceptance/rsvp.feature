@@ -14,8 +14,8 @@ Feature: Who will be attending?
     Then I should see "Please login in order to RSVP"
 
   @event @person
-  Scenario: Choosing Family Members
-  As a participant,
+  Scenario: Identifying which Family Members will attend
+  As a household member,
   It should be easy to indicate which of your family members are attending
 
     Given these Households:
