@@ -2,9 +2,7 @@
 
 body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
 
-.navbar { margin-top: 86px; } // move navbar below image
-
-#content { margin-top: 76px; } // move contents below navbar
+.navbar { margin-top: 26px; } // move navbar below image
 
 // ...TABS.........................
 .tabs-left .nav-tabs {
@@ -29,6 +27,7 @@ body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
 
 .sign_in {
   @include translucent-background;
+  margin-top: 36px;
   padding: 20px;
 }
 
