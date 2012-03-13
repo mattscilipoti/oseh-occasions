@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   respond_to :html
   skip_filter :authenticate
+  layout 'sign_in'
 
   def new
 

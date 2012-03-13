@@ -14,7 +14,7 @@
 
 %hr
 - unless current_person
-  Please #{link_to "login", login_path} in order to RSVP.
+  Please #{link_to "sign in", sign_in_path} in order to RSVP.
 - else
   %h3 Who will attend?
   = form_for event do |f|

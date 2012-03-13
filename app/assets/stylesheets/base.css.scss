@@ -1,4 +1,4 @@
-$color-text: black;
+@import 'mixins';
 
 body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
 
@@ -14,7 +14,7 @@ body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
     color: $color-text;
   }
   .active a, .active a:hover {
-    background: url("overlay-sm.png") top left repeat; // translucent background
+    @include translucent-background;
     font-weight: bold;
   }
   li a:hover {
@@ -23,7 +23,11 @@ body { background: #587eb0 url('oseh_shalom_bg.jpg') no-repeat top; }
 }
 
 .tab-content {
-  background: url("overlay-sm.png") top left repeat; // translucent background
+  @include translucent-background;
+  padding: 20px;
+}
 
+.sign_in {
+  @include translucent-background;
   padding: 20px;
 }

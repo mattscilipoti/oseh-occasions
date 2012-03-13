@@ -1,2 +1,5 @@
 $color-text: black;
 
+@mixin translucent-background {
+  background: url("overlay-sm.png") top left repeat;
+}
