@@ -2,7 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "mixins";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
 
 h3 { padding-bottom: 10px; }
 
-.event .start_date { color: lighten($color-text,25%);}
+.event {
+  @include border-radius(0 3px 3px 0);
+  @include translucent-background;
+  padding: 20px;
+
+  .start_date { color: lighten($color-text,25%);}
+}

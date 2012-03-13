@@ -1,32 +1,31 @@
 - related_events = event.children
+.event
+  %h2= event.name
+  %h3.start_date= event.start_date.stamp(date_stamp(:long, related_events.blank?))
+  %p.description= event.description
 
-%h2= event.name
-%h3.start_date= event.start_date.stamp(date_stamp(:long, related_events.blank?))
-%p.description= event.description
+  - unless related_events.blank?
+    %h3 Related Events
+    %ul
+      - related_events.each do |event|
+        %li
+          =link_to "#{event.name}; ", "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
+          = event.start_date.stamp(date_stamp(:short))
 
-- unless related_events.blank?
-  %h3 Related Events
-  %ul
-    - related_events.each do |event|
-      %li
-        =link_to "#{event.name}; ", "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
-        = event.start_date.stamp(date_stamp(:short))
-
-%hr
-- unless current_person
-  Please #{link_to "sign in", sign_in_path} in order to RSVP.
-- else
-  %h3 Who will attend?
-  = form_for event do |f|
-    %table
-      %thead
-        %tr
-          %th First Name
-          %th Attending?
-      %tbody
-        - current_person.household.members.each do |person|
+  %hr
+  - unless current_person
+    Please #{link_to "sign in", sign_in_path} in order to RSVP.
+  - else
+    %h3 Who will attend?
+    = form_for event do |f|
+      %table
+        %thead
           %tr
-            %td= person.first_name
-            %td= check_box_tag "event[attendee_ids][]", person.id, person.attending?(event), :id => dom_id(person, :attending)
-    = f.submit :class => 'btn'
-
+            %th First Name
+            %th Attending?
+        %tbody
+          - current_person.household.members.each do |person|
+            %tr
+              %td= person.first_name
+              %td= check_box_tag "event[attendee_ids][]", person.id, person.attending?(event), :id => dom_id(person, :attending)
+      = f.submit :class => 'btn btn-primary'

@@ -9,7 +9,7 @@
       -caption = "#{event.start_date.stamp("10/01")} | #{event.name}"
       %li{:class => ('active' if index==0)}= link_to caption, "#tab-#{event.name.parameterize}", :class => 'truncated', :data => {:toggle => "tab"}, :title => event.name
 
-  #upcoming_event.event
+  #upcoming_event
     .tab-content
       - upcoming_events.each_with_index do |event, index|
         .tab-pane{:id => "tab-#{event.name.parameterize}", :class => ('active' if index==0)}
