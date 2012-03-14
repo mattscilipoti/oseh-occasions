@@ -1,4 +1,4 @@
-- related_events = event.children
+- related_events = event.sub_events
 .event
   %h2= event.name
   %h3.start_date= event.start_date.stamp(date_stamp(:long, related_events.blank?))
