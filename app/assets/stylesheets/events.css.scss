@@ -11,3 +11,5 @@ h3 { padding-bottom: 10px; }
   @include tab-contents-container;
   .start_date { color: lighten($color-text, 25%);}
 }
+
+#rsvp { width: 300px; }

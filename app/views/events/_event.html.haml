@@ -13,19 +13,21 @@
           = event.start_date.stamp(date_stamp(:short))
 
   %hr
-  - unless current_person
-    Please #{link_to "sign in", sign_in_path} in order to RSVP.
-  - else
-    %h3 Who will attend?
-    = form_for event do |f|
-      %table
-        %thead
-          %tr
-            %th First Name
-            %th Attending?
-        %tbody
-          - current_person.household.members.each do |person|
+  #rsvp
+    - unless current_person
+      Please #{link_to "sign in", sign_in_path} in order to RSVP.
+    - else
+      %h3 Who will attend?
+      = form_for event do |f|
+        %table.table.table-striped.table-condensed
+          %thead
             %tr
-              %td= person.first_name
-              %td= check_box_tag "event[attendee_ids][]", person.id, person.attending?(event), :id => dom_id(person, :attending)
-      = f.submit :class => 'btn btn-primary'
+              %th Who
+
+              %th Attending?
+          %tbody
+            - current_person.household.members.each do |person|
+              %tr
+                %td= person.partial_name
+                %td= check_box_tag "event[attendee_ids][]", person.id, person.attending?(event), :id => dom_id(person, :attending)
+        = f.submit :class => 'btn btn-primary'

@@ -48,15 +48,24 @@ class Person < ActiveRecord::Base
       if parts[0] =~ Person.title_pattern
         self.title = parts.shift
       end
-      self.first_name  = parts[0]
-      self.middle_name = parts[1]
-      self.last_name   = parts[2]
-      self.name_suffix = parts[3]
+      case parts.count
+      when 2
+        self.first_name, self.last_name = parts
+      else
+        self.first_name  = parts[0]
+        self.middle_name = parts[1]
+        self.last_name   = parts[2]
+        self.name_suffix = parts[3]
+      end
     end
   end
 
   def household_members
     household ? household.members - [self] : []
+  end
+
+  def partial_name
+    [first_name, middle_name].join(' ')
   end
 
   private
