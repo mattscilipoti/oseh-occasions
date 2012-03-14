@@ -11,7 +11,7 @@ Feature: Who will be attending?
 
   Scenario: Only Logged in Users can RSVP
     When I visit the "Yom Kippur" event page
-    Then I should see "Please login in order to RSVP"
+    Then I should see "Please sign in in order to RSVP"
 
   @event @person
   Scenario: Identifying which Family Members will attend
@@ -29,7 +29,7 @@ Feature: Who will be attending?
 
     When I visit the "Yom Kippur" event page
     Then I should see these People:
-      | First Name | Attending? |
+      | Who        | Attending? |
       | Linda      | Yes        |
       | Lawrence   | No         |
       | Candace    | Yes        |
