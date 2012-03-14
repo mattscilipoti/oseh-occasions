@@ -1,12 +1,18 @@
 require 'spec_helper'
 
 describe Person do
-  it "should parse full_name into components" do
-    subject.full_name = "Mr. John Q. Public"
-    subject.title.should == "Mr."
-    subject.first_name.should == 'John'
-    subject.middle_name.should == 'Q.'
-    subject.last_name.should == 'Public'
+  describe '.full_name=' do
+    {'Linda Solomon' => { :first_name => 'Linda', :last_name => 'Solomon', :middle_name => nil, :name_suffix => nil, :title => nil },
+      'John Q. Public Jr.' => { :first_name => 'John', :last_name => 'Public', :middle_name => 'Q.', :name_suffix => 'Jr.', :title => nil },
+      'Gen. Douglas MacArthur' => { :first_name => 'Douglas', :last_name => 'MacArthur', :title => 'Gen.', :middle_name => nil, :name_suffix => nil }
+    }.each do |full_name, parts|
+      parts.each do |column_name, expected_value|
+        it "should parse #{column_name}=='#{expected_value}' from #{full_name}" do
+          subject.full_name = full_name
+          subject.send(column_name).should == expected_value
+        end
+      end
+    end
   end
 
   it "should combine name parts into full_name" do
@@ -26,7 +32,7 @@ describe Person, '(scopes)' do
     [ 'Gen. Douglas MacArthur',
       'Ben Hur',
       'Abraham'
-    ].each {|full_name| Factory :person_full, :full_name => full_name }
+    ].each {|full_name| Factory :person, :full_name => full_name }
   end
 
   describe '#full_names' do
