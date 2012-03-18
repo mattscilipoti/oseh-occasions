@@ -10,7 +10,7 @@
 FactoryGirl.define do
   factory :event do |f|
     f.name { Faker::Lorem.words(2).join(' ') }
-    f.start_date { rand(90).days.from_now }
+    f.start_date { Random.rand(90).days.from_now }
   end
 
   factory :event_full, :parent => :event do |f|
@@ -24,6 +24,7 @@ FactoryGirl.define do
   factory :person do |f|
     f.first_name { Faker::Name.first_name }
     f.last_name  { Faker::Name.last_name }
+    f.household
   end
 
   factory :person_full, :parent => :person do |f|

@@ -9,4 +9,6 @@ step 'I indicate that :attendees will be attending' do |attendees|
   submit_form
 end
 
-
+step 'I should not be asked about attendance' do
+  step %{I should not see "Who will attend?"}
+end

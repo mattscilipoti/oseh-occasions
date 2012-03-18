@@ -5,13 +5,20 @@ Feature: Who will be attending?
 
   Background:
     Given these Events:
-      | Name       |
+      | Name       | SubEvents |
       | Yom Kippur |
+      | High Holidays | Yom Kippur |
 
 
   Scenario: Only Logged in Users can RSVP
     When I visit the "Yom Kippur" event page
     Then I should see "Please sign in in order to RSVP"
+    And  I should not be asked about attendance
+
+  Scenario: Can not sign up for events composed of other events
+    Given I login successfully
+    When I visit the "High Holidays" event page
+    Then I should not be asked about attendance
 
   @event @person
   Scenario: Identifying which Family Members will attend

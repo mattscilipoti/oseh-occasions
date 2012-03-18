@@ -25,6 +25,8 @@ class Person < ActiveRecord::Base
     Person.where(where_clause).order(:full_name)
   }
 
+  #validates_presence_of :household
+
   def self.full_names(filter = nil)
     with_name(filter).pluck :full_name
   end
