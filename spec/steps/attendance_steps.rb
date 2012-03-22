@@ -15,5 +15,5 @@ end
 
 step 'I should see that :attendee_count person/people is/are attending' do |expected_attendee_count|
   #TODO: convert to int
-  step %(I should see "(#{expected_attendee_count} attendees)")
+  step %(I should see "#{expected_attendee_count} Attendee")
 end

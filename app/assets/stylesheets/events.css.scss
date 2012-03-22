@@ -12,4 +12,16 @@ h3 { padding-bottom: 10px; }
   .start_date { color: lighten($color-text, 25%);}
 }
 
+.event {
+  .attendees {
+    float: right;
+  }
+}
+
+ul.related_events {
+ list-style: none;
+
+ li { margin: 4px; }
+}
+
 #rsvp { width: 300px; }

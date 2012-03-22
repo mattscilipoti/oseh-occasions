@@ -1,15 +1,22 @@
 - related_events = event.sub_events
 .event
-  %h2= event.name
+  %h2
+    = event.name
+
+  - if related_events.blank?
+    .attendees
+      %span.badge.badge-info
+        =pluralize event.attendees.size, "Attendee"
+
   %h3.start_date= event.start_date.stamp(date_stamp(:long, related_events.blank?))
-  #attendee_count= "(#{pluralize event.attendees.size, "attendee"})"
   %p.description= event.description
 
   - unless related_events.blank?
     %h3 Related Events
-    %ul
+    %ul.related_events
       - related_events.each do |event|
         %li
+          %span.badge.badge-info{:title => 'Attendees'}= event.attendees.size
           =link_to "#{event.name}; ", "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
           = event.start_date.stamp(date_stamp(:short))
 
