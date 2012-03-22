@@ -35,6 +35,7 @@ Feature: Who will be attending?
     And I indicate that "Linda, Candace, & Ferb" will be attending
 
     When I visit the "Yom Kippur" event page
+    Then I should see that 3 people are attending
     Then I should see these People:
       | Who        | Attending? |
       | Linda      | Yes        |

@@ -2,6 +2,7 @@
 .event
   %h2= event.name
   %h3.start_date= event.start_date.stamp(date_stamp(:long, related_events.blank?))
+  #attendee_count= "(#{pluralize event.attendees.size, "attendee"})"
   %p.description= event.description
 
   - unless related_events.blank?

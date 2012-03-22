@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312132845) do
+ActiveRecord::Schema.define(:version => 20120321214128) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
     t.datetime "start_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "parent_id"
     t.text     "description"
+    t.integer  "attendees_count", :default => 0
   end
 
   add_index "events", ["parent_id"], :name => "index_events_on_parent_id"

@@ -12,3 +12,8 @@ end
 step 'I should not be asked about attendance' do
   step %{I should not see "Who will attend?"}
 end
+
+step 'I should see that :attendee_count person/people is/are attending' do |expected_attendee_count|
+  #TODO: convert to int
+  step %(I should see "(#{expected_attendee_count} attendees)")
+end
