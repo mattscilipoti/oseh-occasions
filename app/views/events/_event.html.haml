@@ -1,4 +1,6 @@
 - related_events = event.sub_events
+- household_attendees_count = event.attendees.from_household(current_person.household).size
+
 .event{:id => dom_id(event)}
   %p
     Our
@@ -8,14 +10,13 @@
     %strong.start_date.inline= event.start_date.stamp(date_stamp(:long, false))
     at
     %strong.start_time.inline= event.start_date.stamp(date_stamp(:time, true))
-    ="."
 
   - if related_events.blank?
     %p
       Currently,
-      %strong #{pluralize event.attendees.size, "people"}
+      %strong= "#{event.attendees.size} people"
       are expected to attend, with
-      %strong 3
+      %strong= household_attendees_count
       from your household.
   %hr
   .details
@@ -26,7 +27,8 @@
             %li.badge.badge-info= event.start_date.stamp(date_stamp(:shortest, related_events.blank?))
             - if related_events.blank?
               %li.badge.attendees{:id => dom_id(event, :attendee_count)}=pluralize event.attendees.size, "Attendee"
-              %li.badge.badge-success.household-attendees{:id => dom_id(event, :household_attendee_count)}= "3 from your home"
+              - if household_attendees_count > 0
+                %li.badge.badge-success.household-attendees{:id => dom_id(event, :household_attendee_count)}= "#{household_attendees_count} from your home"
         %td.description= event.description
 
   - unless related_events.blank?

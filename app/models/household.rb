@@ -1,7 +1,10 @@
 class Household < ActiveRecord::Base
   before_save :assign_family_name
-  has_many :members, :class_name => Person.name#, :inverse_of => :household
-
+  has_many :members, :class_name => Person.name do #, :inverse_of => :household
+    def attending_event(event)
+      joins(:events).where('events_people.person_id in (?)', proxy_association.owner.member_ids)
+    end
+  end
 
   def family_name
     read_attribute(:family_name) || assign_family_name
