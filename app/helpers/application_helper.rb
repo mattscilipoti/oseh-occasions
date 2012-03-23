@@ -5,6 +5,10 @@ module ApplicationHelper
       "Sunday, May 1, 2000"
     when :short
       "Mon, Sep. 24"
+    when :shortest
+      "09/24"
+    when :time
+      ''
     else
       fail "That format (#{format}) is not supported."
     end

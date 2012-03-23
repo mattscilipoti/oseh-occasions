@@ -1,22 +1,41 @@
 - related_events = event.sub_events
-.event
-  %h2
-    = event.name
+.event{:id => dom_id(event)}
+  %p
+    Our
+    %strong= event.name
+    will take place
+    on
+    %strong.start_date.inline= event.start_date.stamp(date_stamp(:long, false))
+    at
+    %strong.start_time.inline= event.start_date.stamp(date_stamp(:time, true))
+    ="."
 
   - if related_events.blank?
-    .attendees
-      %span.badge.badge-info
-        =pluralize event.attendees.size, "Attendee"
-
-  %h3.start_date= event.start_date.stamp(date_stamp(:long, related_events.blank?))
-  %p.description= event.description
+    %p
+      Currently,
+      %strong #{pluralize event.attendees.size, "people"}
+      are expected to attend, with
+      %strong 3
+      from your household.
+  %hr
+  .details
+    %table
+      %tbody
+        %td
+          %ul.summary
+            %li.badge.badge-info= event.start_date.stamp(date_stamp(:shortest, related_events.blank?))
+            - if related_events.blank?
+              %li.badge.attendees{:id => dom_id(event, :attendee_count)}=pluralize event.attendees.size, "Attendee"
+              %li.badge.badge-success.household-attendees{:id => dom_id(event, :household_attendee_count)}= "3 from your home"
+        %td.description= event.description
 
   - unless related_events.blank?
+    %hr
     %h3 Related Events
     %ul.related_events
       - related_events.each do |event|
         %li
-          %span.badge.badge-info{:title => 'Attendees'}= event.attendees.size
+          %span.attendees.badge{:title => 'Attendees'}= event.attendees.size
           =link_to "#{event.name}; ", "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
           = event.start_date.stamp(date_stamp(:short))
 

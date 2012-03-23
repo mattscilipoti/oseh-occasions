@@ -7,7 +7,7 @@ step "these Events:" do |table|
 end
 
 step 'I should see these People:' do |table|
-  actual = page.find('table').all('tr').map do |row|
+  actual = page.find('#rsvp table').all('tr').map do |row|
     row.all('th, td').map do |cell|
       # TODO is there a way to test for checkbox w/o exception?
       begin

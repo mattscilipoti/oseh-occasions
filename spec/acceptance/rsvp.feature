@@ -5,8 +5,8 @@ Feature: Who will be attending?
 
   Background:
     Given these Events:
-      | Name       | SubEvents |
-      | Yom Kippur |
+      | Name          | SubEvents  |
+      | Yom Kippur    |            |
       | High Holidays | Yom Kippur |
 
 
@@ -36,6 +36,7 @@ Feature: Who will be attending?
 
     When I visit the "Yom Kippur" event page
     Then I should see that 3 people are attending
+    Then I should see that 3 people are attending from your household
     Then I should see these People:
       | Who        | Attending? |
       | Linda      | Yes        |

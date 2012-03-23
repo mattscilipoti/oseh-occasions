@@ -13,9 +13,15 @@ h3 { padding-bottom: 10px; }
 }
 
 .event {
-  .attendees {
-    float: right;
+  p { font-size: 1.4em; }
+  .summary {
+    margin: 4px 25px 4px 0;
+
+    li {
+      margin: 1px 0px;
+    }
   }
+  .description { vertical-align: top ;}
 }
 
 ul.related_events {

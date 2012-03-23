@@ -14,6 +14,11 @@ step 'I should not be asked about attendance' do
 end
 
 step 'I should see that :attendee_count person/people is/are attending' do |expected_attendee_count|
-  #TODO: convert to int
-  step %(I should see "#{expected_attendee_count} Attendee")
+  element_id = dom_id(@current_event, :attendee_count)
+  page.find_by_id(element_id).text.should =~ /#{expected_attendee_count}/
+end
+
+step 'I should see that :attendee_count person/people is/are attending from your household' do |expected_attendee_count|
+  element_id = dom_id(@current_event, :household_attendee_count)
+  page.find_by_id(element_id).text.should =~ /#{expected_attendee_count}/
 end
