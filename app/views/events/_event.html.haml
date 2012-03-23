@@ -8,8 +8,9 @@
     will take place
     on
     %strong.start_date.inline= event.start_date.stamp(date_stamp(:long, false))
-    at
-    %strong.start_time.inline= event.start_date.stamp(date_stamp(:time, true))
+    - unless related_events.blank?
+      at
+      %strong.start_time.inline= event.start_date.stamp(date_stamp(:time, true))
 
   - if related_events.blank?
     %p
