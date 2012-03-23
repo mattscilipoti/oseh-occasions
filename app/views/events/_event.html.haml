@@ -1,5 +1,5 @@
 - related_events = event.sub_events
-- household_attendees_count = event.attendees.from_household(current_person.household).size
+- household_attendees_count = current_person ? event.attendees.from_household(current_person.household).size : 0
 
 .event{:id => dom_id(event)}
   %p
@@ -15,9 +15,11 @@
     %p
       Currently,
       %strong= "#{event.attendees.size} people"
-      are expected to attend, with
-      %strong= household_attendees_count
-      from your household.
+      are expected to attend.
+      - if current_person
+        Including
+        %strong= household_attendees_count
+        from your household.
   %hr
   .details
     %table
