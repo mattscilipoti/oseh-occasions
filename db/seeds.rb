@@ -30,15 +30,15 @@ Factory.create(:event_full, :name => 'Back to Shul Night', :start_date => '2012/
 your calendars now. Note that the time is ½ hour earlier than usual.')
 
 
-hh = Factory.create(:event_full, :name => 'High Holidays', :start_date => '2012/09/24')
+hh = Factory.create(:compound_event_full, :name => 'High Holidays', :start_date => '2012/09/24')
 #TODO: rough approximations
-selihot = Factory.create(:event_full, :name => 'Selihot', :start_date => '2012/09/24 9:30pm', :parent => hh)
+selihot = Factory.create(:compound_event_full, :name => 'Selihot', :start_date => '2012/09/24 9:30pm', :parent => hh)
 Factory.create(:event_full, :name => 'Selihot Dessert & Coffee Social', :start_date => '2012/09/24 9:30pm', :parent => selihot)
 Factory.create(:event_full, :name => 'Selihot Study and Discussion', :start_date => '2012/09/24 10:00pm', :parent => selihot)
 Factory.create(:event_full, :name => 'Selihot Service', :start_date => '2012/09/24 11:30pm', :parent => selihot)
 
 
-rosh = Factory.create(:event_full, :name => 'Rosh Hashanah', :start_date => '2012/09/28', :parent => hh)
+rosh = Factory.create(:compound_event_full, :name => 'Rosh Hashanah', :start_date => '2012/09/28', :parent => hh)
 Factory.create(:event_full, :name => '1st Evening', :start_date => '2012/09/28 8:00pm', :parent => rosh)
 
 yom = Factory.create(:event_full, :name => 'Yom Kippur', :start_date => '2012/10/08', :parent => hh)

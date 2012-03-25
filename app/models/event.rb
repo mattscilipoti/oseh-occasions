@@ -5,7 +5,8 @@ class Event < ActiveRecord::Base
       where(:household_id => household)
     end
   end
-  has_many :sub_events, :class_name => Event.name, :foreign_key => 'parent_id'
+
+  has_many :events, :foreign_key => 'parent_id'
 
   scope :upcoming, lambda {|limit|
     limit ||= 5
@@ -14,6 +15,7 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :name, :start_date
 end
+
 
 
 # == Schema Information
@@ -28,5 +30,6 @@ end
 #  parent_id       :integer
 #  description     :text
 #  attendees_count :integer         default(0)
+#  type            :string(255)
 #
 

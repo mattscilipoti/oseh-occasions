@@ -1,7 +1,7 @@
 step "these Events:" do |table|
   table.hashes.each do |attrs|
-    sub_events = attrs.delete('SubEvents')
-    attrs['sub_event_ids'] = Event.where('name in (?)', sub_events).pluck(:id) unless sub_events.nil?
+    events = attrs.delete('SubEvents')
+    attrs['event_ids'] = Event.where('name in (?)', events).pluck(:id) unless events.nil?
     Factory.create :event_full, attrs.attributize_keys
   end
 end

@@ -1,4 +1,3 @@
-- related_events = event.sub_events
 - household_attendees_count = current_person ? event.attendees.from_household(current_person.household).size : 0
 
 .event{:id => dom_id(event)}
@@ -8,59 +7,46 @@
     will take place
     on
     %strong.start_date.inline= event.start_date.stamp(date_stamp(:long, false))
-    - unless related_events.blank?
-      at
-      %strong.start_time.inline= event.start_date.stamp(date_stamp(:time, true))
+    at
+    %strong.start_time.inline= event.start_date.stamp(date_stamp(:time, true))
 
-  - if related_events.blank?
-    %p
-      Currently,
-      %strong= "#{event.attendees.size} people"
-      are expected to attend.
-      - if current_person
-        Including
-        %strong= household_attendees_count
-        from your household.
+  %p
+    Currently,
+    %strong= "#{event.attendees.size} people"
+    are expected to attend.
+    - if current_person
+      Including
+      %strong= household_attendees_count
+      from your household.
   %hr
   .details
     %table
       %tbody
         %td
           %ul.summary
-            %li.badge.badge-info= event.start_date.stamp(date_stamp(:shortest, related_events.blank?))
-            - if related_events.blank?
-              %li.badge.attendees{:id => dom_id(event, :attendee_count)}=pluralize event.attendees.size, "Attendee"
-              - if household_attendees_count > 0
-                %li.badge.badge-success.household-attendees{:id => dom_id(event, :household_attendee_count)}= "#{household_attendees_count} from your home"
+            %li.badge.badge-info= event.start_date.stamp(date_stamp(:shortest, true))
+            %li.badge.attendees{:id => dom_id(event, :attendee_count)}=pluralize event.attendees.size, "Attendee"
+            - if household_attendees_count > 0
+              %li.badge.badge-success.household-attendees{:id => dom_id(event, :household_attendee_count)}= "#{household_attendees_count} from your home"
         %td.description= event.description
 
-  - unless related_events.blank?
-    %hr
-    %h3 Related Events
-    %ul.related_events
-      - related_events.each do |event|
-        %li
-          %span.attendees.badge{:title => 'Attendees'}= event.attendees.size
-          =link_to "#{event.name}; ", "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
-          = event.start_date.stamp(date_stamp(:short))
 
   %hr
   #rsvp
     - unless current_person
       Please #{link_to "sign in", sign_in_path} in order to RSVP.
     - else
-      - if related_events.empty?
-        %h3 Who will attend?
-        = form_for event do |f|
-          %table.table.table-striped.table-condensed
-            %thead
-              %tr
-                %th Who
+      %h3 Who will attend?
+      = form_for event do |f|
+        %table.table.table-striped.table-condensed
+          %thead
+            %tr
+              %th Who
 
-                %th Attending?
-            %tbody
-              - current_person.household.members.each do |person|
-                %tr
-                  %td= person.partial_name
-                  %td= check_box_tag "event[attendee_ids][]", person.id, person.attending?(event), :id => dom_id(person, :attending)
-          = f.submit :class => 'btn btn-primary'
+              %th Attending?
+          %tbody
+            - current_person.household.members.each do |person|
+              %tr
+                %td= person.partial_name
+                %td= check_box_tag "event[attendee_ids][]", person.id, person.attending?(event), :id => dom_id(person, :attending)
+        = f.submit :class => 'btn btn-primary'

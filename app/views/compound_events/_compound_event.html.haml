@@ -1,0 +1,27 @@
+- event ||= compound_event
+- related_events = event.events
+
+.event{:id => dom_id(event)}
+  %p
+    Our
+    %strong= event.name
+    will take place on
+    %strong.start_date.inline= event.start_date.stamp(date_stamp(:long, false))
+
+  %hr
+  .details
+    %table
+      %tbody
+        %td
+          %ul.summary
+            %li.badge.badge-info= event.start_date.stamp(date_stamp(:shortest, related_events.blank?))
+        %td.description= event.description
+
+  %hr
+  %h3 Related Events
+  %ul.related_events
+    - related_events.each do |event|
+      %li
+        %span.attendees.badge{:title => 'Attendees'}= event.attendees.size
+        =link_to "#{event.name}; ", "#tab-#{event.name.parameterize}", :data => {:toggle => "tab"}
+        = event.start_date.stamp(date_stamp(:short))
