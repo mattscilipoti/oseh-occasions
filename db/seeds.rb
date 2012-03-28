@@ -71,10 +71,21 @@ Factory.create :person_full,
 Factory.create :person_full,
         :full_name => "Cynthia Elizabeth"
 
+def random_middle_name
+  middel_name = Faker::Name.first_name
+  case rand(4)
+  when 0; middle_name
+  when 1; nil
+  else "#{middle_name[0]}." # middle initial
+  end
+end
+
 5.times do
   household = Factory.create :household
   rand(6).times do
-    Factory.create :person_full, :household_id => household.id
+    Factory.create :person_full,
+      :household_id => household.id,
+      :middle_name => random_middle_name
   end
 end
 

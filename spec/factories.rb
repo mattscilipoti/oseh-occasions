@@ -37,14 +37,6 @@ FactoryGirl.define do
   end
 
   factory :person_full, :parent => :person do |f|
-    f.middle_name {
-      middle_name = Faker::Name.first_name
-      case rand(4)
-      when 0; middle_name
-      when 1; nil
-      else "#{middle_name[0]}." # middle initial
-      end
-    }
     f.main_phone  { Faker::PhoneNumber.phone_number }
     f.main_email  {|person| "#{person.full_name.parameterize}@example.com" }
   end
