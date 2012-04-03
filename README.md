@@ -4,6 +4,10 @@ Oseh Occasions (working title, we welcome suggestions)
 [![Continuous Integration status](https://secure.travis-ci.org/mattscilipoti/oseh-occasions.png)](http://travis-ci.org/mattscilipoti/oseh-occasions)
 [![Dependency Status](https://gemnasium.com/mattscilipoti/oseh-occasions.png)](https://gemnasium.com/mattscilipoti/oseh-occasions)
 
+Simple event management for small organizations, supporting your member's household:
+  * manage events
+  * track participants, organizers, and volunteers
+
 
 * Rails 3
 * Ruby 1.9
