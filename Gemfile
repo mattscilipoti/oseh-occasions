@@ -41,7 +41,7 @@ group :development, :test do
   unless ENV["CI"] # travis, etc
     gem 'guard-spin',   :require => false
 #    gem 'pry-exception_explorer',   :require => false
-    gem 'ruby-debug19', :require => 'ruby-debug'
+    #gem 'ruby-debug19', :require => 'ruby-debug'
   end
   gem 'rake-hooks', :require => false
   gem "sqlite3", :platform => [:ruby, :mswin, :mingw]
