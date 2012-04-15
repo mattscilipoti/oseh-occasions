@@ -35,6 +35,8 @@ Setup
 
 All tests should pass.
 
+You can seed the db with `rake db:seeds`.
+
 
 
 Deloyment
@@ -52,6 +54,10 @@ See:
 
 Dev Notes
 ===========
+
+Conventions
+-----------
+Twitter Bootstrap
 
 Autotest & Faster test startup w/ spin
 ---------------------------
