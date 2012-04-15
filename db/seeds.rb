@@ -72,7 +72,7 @@ Factory.create :person_full,
         :full_name => "Cynthia Elizabeth"
 
 def random_middle_name
-  middel_name = Faker::Name.first_name
+  middle_name = Faker::Name.first_name
   case rand(4)
   when 0; middle_name
   when 1; nil
