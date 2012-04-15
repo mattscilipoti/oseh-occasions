@@ -8,4 +8,4 @@
       :data => {:provide => 'typeahead', :source => Person.full_names },
       :autofocus => true
     =f.submit "It's me!"
-  %p.sign_up Don't see your name?  Click here to #{ link_to "Sign Up",  new_person_path }
+  %p.sign_up Couldn't find your name? Click here to #{ link_to "Sign Up",  new_person_path }.
