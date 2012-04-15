@@ -1,8 +1,13 @@
 step "these Events:" do |table|
   table.hashes.each do |attrs|
+    factory_name = :event_full
     events = attrs.delete('SubEvents')
-    attrs['event_ids'] = Event.where('name in (?)', events).pluck(:id) unless events.nil?
-    Factory.create :event_full, attrs.attributize_keys
+    if !events.blank?
+      attrs['event_ids'] = Event.where('name in (?)', events).pluck(:id)
+      factory_name = :compound_event
+    end
+
+    new_event = Factory.create factory_name, attrs.attributize_keys
   end
 end
 

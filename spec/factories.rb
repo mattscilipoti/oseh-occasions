@@ -13,10 +13,6 @@ FactoryGirl.define do
     f.start_date { Random.rand(90).days.from_now }
   end
 
-  factory :compound_event_full, :parent => :compound_event do |f|
-    f.events { [Factory(:event)] }
-  end
-
   factory :event do |f|
     f.name { Faker::Lorem.words(2).join(' ') }
     f.start_date { Random.rand(90).days.from_now }
