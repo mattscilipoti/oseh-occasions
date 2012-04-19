@@ -28,6 +28,7 @@ Feature: Who will be attending?
     Given these Households:
       | Family Name    | Heads of Household                      | Dependents                                  | Main Phone |
       | Fletcher/Flynn | Linda Flynn-Fletcher, Lawrence Fletcher | Candace Flynn, Phineas Flynn, Ferb Fletcher | 555-1234   |
+      | Brown/Fox      | Dan Fox, Ronnie Brown                   | Toni Goldberg                               | 555-4567   |
 
     And I am "Linda Flynn-Fletcher"
 
@@ -44,3 +45,22 @@ Feature: Who will be attending?
       | Candace    | Yes        |
       | Phineas    | No         |
       | Ferb       | Yes        |
+      
+    When I am "Dan Fox"
+    And I visit the "Yom Kippur" event page
+    And I indicate that "Dan, Ronnie" will be attending
+    
+    When I visit the "Yom Kippur" event page
+    Then I should see that 5 people are attending
+    Then I should see that 2  people are attending from my household
+    Then I should see these People:
+      | Who     | Attending? |
+      | Dan     | Yes        |
+      | Ronnie  | Yes        |
+      | Toni    | No         |
+      
+    When I am "Phineas Flynn"
+    And I visit the "Yom Kippur" event page
+    Then I should see that 5 people are attending
+    Then I should see that 3 people are attending from your household
+    

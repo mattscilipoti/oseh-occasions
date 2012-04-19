@@ -37,11 +37,15 @@ step "these Households should exist:" do |table|
 end
 
 step "these People should have these Households:" do |table|
-  table.hashes.collect do |row|
+  actual = table.hashes.collect do |row|
     person_name = row.attributize_keys[:person]
 
     person    = Person.find_by_full_name(person_name)
     household = person.household
     [person.full_name, household.head?(person) ? 'Yes' : 'No', household.member_names]
+    
   end
+  diff = table.diff(TableDiff::Table.new(actual))
+  diff.should_not be_different, diff
+
 end
