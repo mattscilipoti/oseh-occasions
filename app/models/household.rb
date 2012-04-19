@@ -32,7 +32,7 @@ class Household < ActiveRecord::Base
 
   def assign_family_name
     return if read_attribute(:family_name) # self.family_name causes cycle
-    last_names = members.collect{|person| person.last_name.include?('-') ? last_name.split('-') : last_name }
+    last_names = members.collect{|person| person.last_name.include?('-') ? person.last_name.split('-') : person.last_name }
     write_attribute(:family_name, last_names.uniq.sort.join('/'))
   end
 end
