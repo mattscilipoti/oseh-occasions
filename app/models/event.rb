@@ -14,6 +14,20 @@ class Event < ActiveRecord::Base
   }
 
   validates_presence_of :name, :start_date
+  
+  def household_attendee_ids= new_attendee_ids
+    new_attendees = Person.find(new_attendee_ids)
+    household = new_attendees.first.household
+ # ap new_attendees
+    household_member_ids = household.member_ids
+# puts "HMI=#{household_member_ids}"
+# puts "HM=#{household.inspect}"
+    attendee_ids_to_delete = household_member_ids - new_attendee_ids
+ #puts "AITD=#{attendee_ids_to_delete}"
+    self.attendee_ids -= attendee_ids_to_delete
+# puts "AI=#{self.attendee_ids}"
+    #self.attendee_ids = attendee_ids || new_attendee_ids
+  end
 end
 
 
