@@ -20,6 +20,7 @@ gem 'rspec-rails'
 gem 'stamp'
 gem 'turnip' # rspec "features"
 #gem 'virtus' # attributes on steroids for PORO
+gem 'win32console', :platforms => [:mswin,:mingw]
 
 # Gems used only for assets and not required
 # in production environments by default.
