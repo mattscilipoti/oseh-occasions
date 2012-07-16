@@ -11,6 +11,7 @@ gem 'devise'
 gem 'factory_girl_rails'
 gem 'faker'
 gem 'haml-rails'
+#gem 'haml-scaffold'
 gem 'heroku', :require => false
 gem 'jquery-rails'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
@@ -40,7 +41,7 @@ group :development, :test do
   gem 'database_cleaner'
   unless ENV["CI"] # travis, etc
     gem 'guard-spin',   :require => false
-#   gem 'pry-exception_explorer',   :require => false
+    gem 'pry-nav'
 #    gem 'ruby-debug19', :require => 'ruby-debug'
 #      gem 'ruby-debug-base19x', '~> 0.11.30.pre4'
   end
