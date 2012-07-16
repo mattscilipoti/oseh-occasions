@@ -12,7 +12,7 @@ require 'database_cleaner'
 DatabaseCleaner.clean_with :truncation
 
 # default admin user for rails_admin
-User.create!(:email => "admin@oseh_shalom.org", :password => "oseh_shalom")
+User.create!(:email => "admin@oseh-shalom.org", :password => "oseh_shalom")
 #User.create!(:email => "matt@scilipoti.name",   :password => "oseh_shalom")
 
 # demo data
@@ -42,7 +42,7 @@ rosh = Factory.create(:compound_event, :name => 'Rosh Hashanah', :start_date => 
 Factory.create(:event_full, :name => '1st Evening', :start_date => '2012/09/28 8:00pm', :parent => rosh)
 Factory.create(:event_full, :name => '1st Day, Aleph Service', :start_date => '2012/09/29 8:45am', :parent => rosh)
 Factory.create(:event_full, :name => "1st Day, Children's Services & Programs", :start_date => '2012/09/29 10:00am', :parent => rosh)
-Factory.create(:event_full, :name => 'Tashlih (gather by palyground)', :start_date => '2012/09/29 12:30am', :parent => rosh)
+Factory.create(:event_full, :name => 'Tashlih (gather by playground)', :start_date => '2012/09/29 12:30am', :parent => rosh)
 Factory.create(:event_full, :name => '1st Day, Beit Service', :start_date => '2012/09/29 1:00pm', :parent => rosh)
 Factory.create(:event_full, :name => '2nd Evening', :start_date => '2012/09/29 7:30pm', :parent => rosh)
 Factory.create(:event_full, :name => '2nd Day', :start_date => '2012/09/30 9:00am', :parent => rosh)
