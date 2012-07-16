@@ -112,18 +112,18 @@ RailsAdmin.config do |config|
   # config.model Person do
   #   # Found associations:
   #     configure :household, :belongs_to_association   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :title, :string 
-  #     configure :first_name, :string 
-  #     configure :middle_name, :string 
-  #     configure :last_name, :string 
-  #     configure :name_suffix, :string 
-  #     configure :main_phone, :string 
-  #     configure :main_email, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :full_name, :string 
-  #     configure :household_id, :integer         # Hidden 
+  #     configure :id, :integer
+  #     configure :title, :string
+  #     configure :first_name, :string
+  #     configure :middle_name, :string
+  #     configure :last_name, :string
+  #     configure :name_suffix, :string
+  #     configure :main_phone, :string
+  #     configure :main_email, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :full_name, :string
+  #     configure :household_id, :integer         # Hidden
   #     configure :head_of_household, :boolean   #   # Sections:
   #   list do; end
   #   export do; end
@@ -132,4 +132,20 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
   # end
+
+  config.model Event do
+    list do
+      field :name
+      field :attendees_count
+      field :start_date
+      field :updated_at
+      field :parent
+    end
+    export do; end
+    show do; end
+    edit do; end
+    create do; end
+    update do; end
+  end
+
 end
