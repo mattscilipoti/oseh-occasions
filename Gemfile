@@ -39,6 +39,7 @@ end
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'cucumber-rails'
   gem 'database_cleaner'
   unless ENV["CI"] # travis, etc
     gem 'guard-spin',   :require => false
