@@ -43,4 +43,4 @@ end
 DatabaseCleaner.clean_with :truncation
 
 # ensure we have one, known user for authentication in tests
-#Factory :person_full, :full_name => 'Rabbi Douglas T. Heifetz'
+Factory :person_full, :full_name => 'Rabbi Douglas T. Heifetz'
