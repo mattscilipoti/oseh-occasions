@@ -1,5 +1,3 @@
-require File.expand_path('../support/table_diff', File.dirname(__FILE__))
-
 step "these Households:" do |table|
   table.hashes.each do |household_attributes|
     attrs = household_attributes.attributize_keys
@@ -30,10 +28,7 @@ step "these Households should exist:" do |table|
     collection << table.headers if collection.blank?
     collection << [household.family_name, household.names_of_heads_of_household(', '), household.names_of_dependents(', '), household.main_phone]
   end
-
-  diff = table.diff(TableDiff::Table.new(actual))
-  diff.should_not be_different, diff
-
+  table.diff!(actual)
 end
 
 step "these People should have these Households:" do |table|
@@ -43,9 +38,6 @@ step "these People should have these Households:" do |table|
     person    = Person.find_by_full_name(person_name)
     household = person.household
     [person.full_name, household.head?(person) ? 'Yes' : 'No', household.member_names]
-    
   end
-  diff = table.diff(TableDiff::Table.new(actual))
-  diff.should_not be_different, diff
-
+  table.diff!(actual)
 end
