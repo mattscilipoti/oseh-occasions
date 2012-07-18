@@ -1,4 +1,4 @@
-step 'debug' do
+step /debug/i do
   debugger
   puts 'continuing'
 end

@@ -1,4 +1,4 @@
-step "I am :full_name" do |full_name|
+step 'I am "$full_name"' do |full_name|
   person = Person.find_or_create_by_full_name(Factory.attributes_for(:person_full, :full_name => full_name))
   login_as(person)
 end
@@ -15,7 +15,7 @@ step 'I am the Person:' do |table|
   end
 end
 
-step "I search by my :last_name" do |name_part|
+step 'I search by my "$last_name"' do |name_part|
   within '#person_search' do
     fill_in 'person_full_name', :with => @person.send(name_part.parameterize.underscore)
     submit_form
