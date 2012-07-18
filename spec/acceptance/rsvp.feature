@@ -52,7 +52,7 @@ Feature: Who will be attending?
     
     When I visit the "Yom Kippur" event page
     Then I should see that 5 people are attending
-    Then I should see that 2  people are attending from my household
+    Then I should see that 2 people are attending from your household
     Then I should see these People:
       | Who     | Attending? |
       | Dan     | Yes        |

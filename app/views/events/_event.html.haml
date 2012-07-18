@@ -48,5 +48,5 @@
             - current_person.household.members.each do |person|
               %tr
                 %td= person.partial_name
-                %td= check_box_tag "event[attendee_ids][]", person.id, person.attending?(event), :id => dom_id(person, :attending)
+                %td= check_box_tag "event[household_attendee_ids][]", person.id, person.attending?(event), :id => dom_id(person, :attending)
         = f.submit :class => 'btn btn-primary'
