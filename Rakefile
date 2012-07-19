@@ -8,6 +8,10 @@ require 'rake/hooks' unless Rails.env.production?
 
 OsehOccasions::Application.load_tasks
 
+# WORKAROUND for err: "Don't know how to build task 'load_config'"
+# rake-hooks can no longer re-add 'db:load_config'as 'load_config'
+task :load_config => 'db:load_config'
+
 unless Rails.env.production?
   desc 'These are the steps that should be run whenever the db schema is changed.'
   task 'db:after_schema_change' do

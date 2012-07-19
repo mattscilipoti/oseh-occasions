@@ -6,6 +6,7 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'awesome_print'
+# gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'database_cleaner', :require => false
 gem 'devise'
 gem 'factory_girl_rails'
@@ -32,7 +33,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+  # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
