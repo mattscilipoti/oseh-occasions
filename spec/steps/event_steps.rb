@@ -23,6 +23,7 @@ step 'I should see these People:' do |table|
       end
     end
   end
-  table.diff!(actual)
+  diff = table.diff(TableDiff::Table.new(actual))
+  diff.should_not be_different, diff
 end
 
